@@ -1,5 +1,5 @@
 #map_container {
-  baground-image:url("relevant.jpg")
+  baground-image:url("relevant.jpg");
   position: absolute;
   width:900px;
   height:100%;
