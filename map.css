@@ -2,12 +2,11 @@
   background-image:url("relevant.jpg");
   position: absolute;
   height:900px;
-  width:100%;
+  width:1400px;
   background-repeat: no-repeat;
   border-radius: 5px;
 }
 .place img {
-  width: 20px;
   height: 20px;
 }
 .place {
@@ -20,6 +19,6 @@
 }
 #place1{
   left:50px;
-  top:10px;
+  top:300px;
 }
 
