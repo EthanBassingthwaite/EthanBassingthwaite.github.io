@@ -8,6 +8,7 @@ $(document).ready(function(){
   $("#place1").mouseout(function(){
     $('#place1').addclass('invisible');
     $('#place1').removeclass('visible');
+    alert('wow');
   });
   
 });
