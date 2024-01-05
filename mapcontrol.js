@@ -1,12 +1,12 @@
 $(document).ready(function(){
-  alert('Ready to go3');
+  alert('Ready to go4');
 
   $("#place1").mouseover(function(){
-    $("p").css("background-color", "yellow");
-    alert('a thing happened')
+    $('#place1").addclass('visible');
+
   });
   $("#place1").mouseout(function(){
-    $("p").css("background-color", "lightgray");
+    $('#place1').addclass('invisible');
   });
   
 });
