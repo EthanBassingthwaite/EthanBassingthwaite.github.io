@@ -1,1 +1,8 @@
-
+#map_container {
+  baground-image:url("relevant.jpeg")
+  position: absolute;
+  width:900px;
+  height:100%;
+  background-repeat: no-repeat;
+  border-radius: 5px;
+}
