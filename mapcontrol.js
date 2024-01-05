@@ -1,14 +1,14 @@
 $(document).ready(function(){
-  alert('Ready to go5');
+  alert('Ready to go6');
 
-  $("#place1icon").mouseover(function(){
-    $('#place1").addclass('visible');
-    $('#place1").removeclass('invisible');
-  });
-  $("#place1icon").mouseout(function(){
-    $('#place1').addclass('invisible');
-    $('#place1').removeclass('visible');
-    alert('wow');
-  });
+  var $div = $('#place1'),
+    hoverIn = function(){
+        $div.css('visibility', 'visible');
+    },
+    hoverOut = function(){
+        $div.css('visibility', 'hidden');
+    };
+
+$('#place1').hover(hoverIn, hoverOut);
   
 });
