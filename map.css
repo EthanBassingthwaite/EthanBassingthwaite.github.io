@@ -10,6 +10,7 @@
   width 2px;
 }
 .place {
+  font-size:8px;
   position: absolute;
   background-color: white;
   padding: 5px;
