@@ -1,8 +1,8 @@
 #map_container {
   baground-image:url("EthanBassingthwaite.github.io/relevant.jpg");
   position: absolute;
-  width:252px;
   height:200px;
+  width:252px;
   background-repeat: no-repeat;
   border-radius: 5px;
 }
