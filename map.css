@@ -1,8 +1,8 @@
 #map-container {
   background-image:url("relevant.jpg");
   position: absolute;
-  height:200px;
-  width:252px;
+  height:900px;
+  width:100%;
   background-repeat: no-repeat;
   border-radius: 5px;
 }
