@@ -7,13 +7,14 @@
   border-radius: 5px;
 }
 .place img {
-  width 2px;
+  width 20px;
 }
 .place {
   font-size:8px;
   position: absolute;
   background-color: red;
   padding: 5px;
+  height: 10px;
   width: 9px;
 }
 #place1{
