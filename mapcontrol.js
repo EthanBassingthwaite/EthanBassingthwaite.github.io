@@ -1,7 +1,7 @@
 $(document).ready(function(){
   alert('Ready to go');
 
-  $("#place1").mouseover(function(){
+  $("p").mouseover(function(){
     $("p").css("background-color", "yellow");
   });
   $("p").mouseout(function(){
