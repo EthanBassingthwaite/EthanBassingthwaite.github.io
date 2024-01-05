@@ -6,4 +6,17 @@
   background-repeat: no-repeat;
   border-radius: 5px;
 }
+.place img {
+  width 2px;
+}
+.place {
+  position: absolute;
+  background-color: white;
+  padding: 5px;
+  width: 9px;
+}
+.place{
+  left:50px;
+  top:10px;
+}
 
