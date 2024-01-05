@@ -12,6 +12,9 @@
 }
 .place {
   position: absolute;
+  background-color: white;
+  padding: 5px;
+  width: 900px;
 }
 .place{
   left:50px;
