@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  alert('Ready to go2');
+  alert('Ready to go3');
 
   $("#place1").mouseover(function(){
     $("p").css("background-color", "yellow");
