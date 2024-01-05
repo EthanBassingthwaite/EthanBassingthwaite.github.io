@@ -6,3 +6,14 @@
   background-repeat: no-repeat;
   border-radius: 5px;
 }
+
+.place img {
+  width 20px;
+}
+.place {
+  position: absolute;
+}
+.place{
+  left:50px;
+  top:10px;
+}
