@@ -30,7 +30,7 @@
             background-color: #000000;
             color: #fff;
             border: 1px solid red;
-            border-radius: 0px;
+            border-radius: 2px;
         }
     </style>
 </head>
@@ -50,14 +50,14 @@
 
 <script>
     // Map initialization 
-    var map = L.map('map').setView([42.982821, -117.054826], 19);
+    var map = L.map('map').setView([42.982521, -117.054526], 18);
     map.setMaxBounds(map.getBounds());
 
 
     
     //google satellite
     googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
-        maxZoom: 30,
+        maxZoom: 25,
         minZoom: 18,
         subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
     });
@@ -88,11 +88,7 @@
           markerlist.push(L.marker(coorlist[i], {icon: myIcon}));
           markerlist[i].bindPopup(textlist[i]).openPopup().addTo(map);
     }
-    var singleMarker = L.marker([28.3949, 84.1240], { icon: myIcon, draggable: false });
-    var popup = singleMarker.bindPopup('Insert Text here ').openPopup()
-    popup.addTo(map);
 
-    var secondMarker = L.marker([29.3949, 83.1240], { icon: myIcon, draggable: true });
 
 
 
