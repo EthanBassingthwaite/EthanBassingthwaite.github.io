@@ -50,7 +50,7 @@
 
 <script>
     // Map initialization 
-    var map = L.map('map').setView([28.3949, 84.1240], 8);
+    var map = L.map('map').setView([42.98, 117.05], 15);
 
 
 
@@ -58,6 +58,7 @@
     //google satellite
     googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
         maxZoom: 20,
+        minZoom: 10,
         subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
     });
     googleSat.addTo(map)
