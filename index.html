@@ -110,11 +110,11 @@
                         MARKER
     ================================================*/
     var myIcon = L.icon({
-        iconUrl: 'relevant.jpg',
+        iconUrl: 'icon.png',
         iconSize: [40, 40],
     });
-    var singleMarker = L.marker([28.3949, 84.1240], { icon: myIcon, draggable: true });
-    var popup = singleMarker.bindPopup('This is the Nepal. ' + singleMarker.getLatLng()).openPopup()
+    var singleMarker = L.marker([28.3949, 84.1240], { icon: myIcon, draggable: false });
+    var popup = singleMarker.bindPopup('Insert Text here ').openPopup()
     popup.addTo(map);
 
     var secondMarker = L.marker([29.3949, 83.1240], { icon: myIcon, draggable: true });
