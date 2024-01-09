@@ -58,7 +58,7 @@
     //google satellite
     googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
         maxZoom: 20,
-        minZoom: 10,
+        //minZoom: 10,
         subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
     });
     googleSat.addTo(map)
@@ -79,6 +79,12 @@
         iconUrl: 'icon.png',
         iconSize: [40, 40],
     });
+    var coorlist = [[42.982821, 117.054826], [42.982822	117.054836], [42. 982829, 117.054818];
+    var markerlist = [];
+    for (let i = 0; i < coorlist.length; i++) {
+          markerlist.push(L.marker(coorlist[i], {icon: myIcon});
+          markerlist[i].bindPopup('Insert Text here ').openPopup().addTo(map);
+    }
     var singleMarker = L.marker([28.3949, 84.1240], { icon: myIcon, draggable: false });
     var popup = singleMarker.bindPopup('Insert Text here ').openPopup()
     popup.addTo(map);
