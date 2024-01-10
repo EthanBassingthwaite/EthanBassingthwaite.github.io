@@ -51,14 +51,10 @@
 <script>
     // Map initialization 
 
-    var csv_file = new File('CemetaryList.csv');
-    csv_file.open('r');
-    csv_file.encoding = 'utf-8';
-    var data = csv_file.read().split('/\r\n|\n/'); // split by lines
-    csv_file.close();
-    for (var row in data) data[row].split(','); // split all lines by comas
+    var csv = Folder('./CemetaryList.csv');
+    alert(csv);
+        
 
-    alert(data);
     
     var map = L.map('map').setView([42.982521, -117.054526], 18);
     map.setMaxBounds(map.getBounds());
