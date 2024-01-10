@@ -51,7 +51,7 @@
 <script>
     // Map initialization 
 
-    var csv_file = File('CemetaryList.csv');
+    var csv_file = new File('CemetaryList.csv');
     csv_file.open('r');
     csv_file.encoding = 'utf-8';
     var data = csv_file.read().split('/\r\n|\n/'); // split by lines
