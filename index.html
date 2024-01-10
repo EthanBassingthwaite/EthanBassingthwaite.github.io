@@ -62,7 +62,7 @@
                 .catch(error => console.error('Error fetching the file:', error));
         });
 
-    console.log(csvLines);
+    alert(csvLines);
     
     var map = L.map('map').setView([42.982521, -117.054526], 18);
     map.setMaxBounds(map.getBounds());
