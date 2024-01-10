@@ -51,7 +51,7 @@
 <script>
     // Declare a variable to store the lines globally
     var csvLines;
-    console.log('test');
+ 
     document.addEventListener('DOMContentLoaded', function () {
         // Specify the path to your CSV file
         fetch('./CemetaryList.csv')
@@ -59,10 +59,7 @@
             .then(contents => {
                 // Split the CSV data into lines
                 csvLines = contents.split('\n');
-
-                // You can process the CSV data here
-                // For example, log it to the console
-                console.log(csvLines);
+                csvLines = csvLines.map(line => line.split(','));
 
             })
             .catch(error => console.error('Error fetching the file:', error))
@@ -72,8 +69,7 @@
                 
             });
     });
-    console.log('test2');
-    console.log(csvLines);
+
     
     var map = L.map('map').setView([42.982521, -117.054526], 18);
     map.setMaxBounds(map.getBounds());
