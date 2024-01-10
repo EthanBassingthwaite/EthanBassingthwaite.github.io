@@ -49,20 +49,31 @@
 
 
 <script>
-    // Map initialization 
+    // Declare a variable to store the lines globally
     var csvLines;
-
+    console.log('test');
     document.addEventListener('DOMContentLoaded', function () {
         // Specify the path to your CSV file
-            fetch('./CemetaryList.csv').then(response => response.text()).then(contents => {
-                    // Split the CSV data into lines
-                    csvLines = contents.split('\n');
+        fetch('./CemetaryList.csv')
+            .then(response => response.text())
+            .then(contents => {
+                // Split the CSV data into lines
+                csvLines = contents.split('\n');
 
-                })
-                .catch(error => console.error('Error fetching the file:', error));
-        });
+                // You can process the CSV data here
+                // For example, log it to the console
+                console.log(csvLines);
 
-    alert(csvLines);
+                // Display the content in a <pre> element
+                document.getElementById('output').textContent = csvLines.join('\n');
+            })
+            .catch(error => console.error('Error fetching the file:', error))
+            .finally(() => {
+                // Perform any additional operations here or call a function
+                // Now csvLines is defined and has the data
+                exampleFunction();
+            });
+    });
     
     var map = L.map('map').setView([42.982521, -117.054526], 18);
     map.setMaxBounds(map.getBounds());
