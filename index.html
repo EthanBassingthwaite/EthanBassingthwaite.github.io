@@ -56,13 +56,13 @@
             fetch('CemetaryList.csv')
                 .then(response => response.text())
                 .then(contents => {
-                    var lines = contents.split('\n');
+                    var CemList = contents.split('\n');
 
 
                 })
                 .catch(error => console.error('Error fetching the file:', error));
         });
-    alert(lines);
+    console.log(CemList[0]);
 
     
     var map = L.map('map').setView([42.982521, -117.054526], 18);
