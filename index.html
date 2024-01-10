@@ -51,8 +51,17 @@
 <script>
     // Map initialization 
 
-    var csv = Folder('CemetaryList.csv');
-    alert(csv);
+    document.addEventListener('DOMContentLoaded', function () {
+
+            fetch('CemetaryList.csv')
+                .then(response => response.text())
+                .then(contents => {
+                    var lines = contents.split('\n');
+
+
+                })
+                .catch(error => console.error('Error fetching the file:', error));
+        });
         
 
     
