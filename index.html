@@ -49,8 +49,6 @@
 
 
 <script>
-    // Declare a variable to store the lines globally
-    var csvLines;
  
     document.addEventListener('DOMContentLoaded', function () {
         // Specify the path to your CSV file
@@ -60,7 +58,6 @@
                 // Split the CSV data into lines
                 csvLines = contents.split('\n');
                 csvLines = csvLines.map(line => line.split(','));
-                let CemList = csvLines;
             })
             .catch(error => console.error('Error fetching the file:', error))
             .finally(() => {
@@ -69,9 +66,12 @@
                         iconUrl: 'icon.png',
                         iconSize: [10, 10],
                     });
-                    var textlist = ['Grave 1', 'Grave 2', 'Grave 3'];
-                    var coorlist = [[42.982821, -117.054826], [42.982822, -117.054836], [42.982829, -117.054818]];
-                    var markerlist = [];
+                    var textlist = [];
+                    var coorlist = [];
+                    for (let i = 1; i < csvLines.length; i++) {
+                        textlist.appent(csvLines[i][0]+', '+csvLines[i][2]);
+                    }
+
                     for (let i = 0; i < coorlist.length; i++) {
                         markerlist.push(L.marker(coorlist[i], {icon: myIcon}));
                         markerlist[i].bindPopup(textlist[i]).openPopup().addTo(map);
