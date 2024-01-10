@@ -45,7 +45,7 @@
 
 <!-- leaflet js  -->
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-
+<script src="PapaParse.js"></script>
 
 
 <script>
@@ -58,6 +58,17 @@
                 // Split the CSV data into lines
                 csvLines = contents.split('\n');
                 csvLines = csvLines.map(line => line.split(','));
+                Papa.parse(contents, {
+                        header: true, // Set to true if your CSV has a header row
+                        complete: function(results) {
+                            // Access the parsed data
+                            var csvLines = results.data;
+
+                        },
+                        error: function(error) {
+                            console.error('Error parsing the CSV:', error.message);
+                        }
+                });
             })
             .catch(error => console.error('Error fetching the file:', error))
             .finally(() => {
@@ -73,7 +84,7 @@
                         textlist.push(csvLines[i][0]+', '+csvLines[i][2]);
                         coorlist.push([csvLines[i][6], csvLines[i][7]]);
                     }
-                    
+                    console.log(textlist);
                     for (let i = 0; i < coorlist.length; i++) {
                         markerlist.push(L.marker(coorlist[i], {icon: myIcon}));
                         markerlist[i].bindPopup(textlist[i]).openPopup().addTo(map);
