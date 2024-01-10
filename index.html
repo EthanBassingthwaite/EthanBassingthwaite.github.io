@@ -50,18 +50,10 @@
 
 <script>
     // Map initialization 
-
-    document.addEventListener('DOMContentLoaded', function () {
-
-            fetch('CemetaryList.csv')
-                .then(response => response.text())
-                .then(contents => {
+    fetch('CemetaryList.csv').then(response => response.text()).then(contents => {
                     var CemList = contents.split('\n');
-
-
                 })
                 .catch(error => console.error('Error fetching the file:', error));
-        });
     console.log(CemList[0]);
 
     
