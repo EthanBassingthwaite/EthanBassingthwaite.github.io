@@ -54,9 +54,7 @@
 
     document.addEventListener('DOMContentLoaded', function () {
         // Specify the path to your CSV file
-            fetch('CemetaryList.csv)
-                .then(response => response.text())
-                .then(contents => {
+            fetch('./CemetaryList.csv').then(response => response.text()).then(contents => {
                     // Split the CSV data into lines
                     csvLines = contents.split('\n');
 
