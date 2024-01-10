@@ -60,16 +60,12 @@
                 // Split the CSV data into lines
                 csvLines = contents.split('\n');
                 csvLines = csvLines.map(line => line.split(','));
-
+                let CemList = csvLines;
             })
             .catch(error => console.error('Error fetching the file:', error))
-            .finally(() => {
-                // Perform any additional operations here or call a function
-                // Now csvLines is defined and has the data
-                
-            });
+
     });
-    console.log(csvLines);
+    console.log(CemList);
     
     var map = L.map('map').setView([42.982521, -117.054526], 18);
     map.setMaxBounds(map.getBounds());
