@@ -49,7 +49,10 @@
 
 
 <script>
- 
+    var map = L.map('map').setView([42.982521, -117.054526], 18);
+    map.setMaxBounds(map.getBounds());
+    var markersLayer = new L.LayerGroup().addTo(map);
+    
     document.addEventListener('DOMContentLoaded', function () {
         let csvLines;
         fetch('./CemetaryList.csv')
@@ -97,9 +100,7 @@
         });
 
     
-    var map = L.map('map').setView([42.982521, -117.054526], 18);
-    map.setMaxBounds(map.getBounds());
-    var markersLayer = new L.LayerGroup().addTo(map);
+    
 
     
     //google satellite
