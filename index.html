@@ -57,6 +57,7 @@
                 //Parse it into an array
                 let csvLines = Papa.parse(contents, {
                         header: true
+                });
             })
             .catch(error => console.error('Error fetching the file:', error))
             .finally(() => {
