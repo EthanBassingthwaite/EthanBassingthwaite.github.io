@@ -51,10 +51,31 @@
 <script>
     var map = L.map('map').setView([42.982521, -117.054526], 18);
     map.setMaxBounds(map.getBounds());
-    var markersLayer = new L.LayerGroup().addTo(map);
+    let markersLayer = new L.LayerGroup().addTo(map);
+    let csvLinves
+
+    function addMarkers(data) {
+        var myIcon = L.icon({
+            iconUrl: 'icon.png',
+            iconSize: [10, 10],
+        });
+
+        var textlist = [];
+        var coorlist = [];
+        var markerlist = [];
+
+        for (let i = 0; i < data.length; i++) {
+            textlist.push(data[i]['Last Name'] + ', ' + data[i]['First Name']);
+            coorlist.push([data[i]['GPS 1'], data[i]['GPS 2']]);
+        }
     
+        for (let i = 0; i < coorlist.length; i++) {
+            markerlist.push(L.marker(coorlist[i], { icon: myIcon }));
+            markerlist[i].bindPopup(textlist[i]).openPopup().addTo(markersLayer);
+        }
+    }
+
     document.addEventListener('DOMContentLoaded', function () {
-        let csvLines;
         fetch('./CemetaryList.csv')
             .then(response => response.text())
             .then(contents => {
@@ -62,28 +83,10 @@
                 csvLines = Papa.parse(contents, {
                         header: true
                 }).data;
-                console.log('set csvlines')
+                markersLayer = new L.LayerGroup().addTo(map);
+                addMarkers(csvLines);
             })
-            .catch(error => console.error('Error fetching the file:', error))
-            .finally(() => {
-                    //This seems to be the only area I can access the csv from, which makes me sad. 
-                    var myIcon = L.icon({
-                        iconUrl: 'icon.png',
-                        iconSize: [10, 10],
-                    });
-                    var textlist = [];
-                    var coorlist = [];
-                    var markerlist = [];
-                    for (let i = 0; i < csvLines.length; i++) {
-                        textlist.push(csvLines[i]['Last Name']+', '+csvLines[i]['First Name']);
-                        coorlist.push([csvLines[i]['GPS 1'], csvLines[i]['GPS 2']]);
-                    }
-                    console.log(coorlist);
-                    for (let i = 0; i < coorlist.length; i++) {
-                        markerlist.push(L.marker(coorlist[i], {icon: myIcon}));
-                        markerlist[i].bindPopup(textlist[i]).openPopup().addTo(map);
-                    }
-                });
+            .catch(error => console.error('Error fetching the file:', error));
     });
 
     document.getElementById('searchInput').addEventListener('input', function () {
@@ -93,11 +96,11 @@
 
             var filteredMarkers = csvLines.data.filter(function (data) {
                 return data['First Name'].toLowerCase().includes(searchTerm) ||
-                    data['Last Name'].toLowerCase().includes(searchTerm);
+                       data['Last Name' ].toLowerCase().includes(searchTerm);
             });
 
             addMarkers(filteredMarkers);
-        });
+    });
 
     
     
