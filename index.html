@@ -8,7 +8,7 @@
 
     <!-- leaflet css  -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-
+    <input type="text" id="searchInput" placeholder="Search...">
     <style>
         body {
             margin: 0;
@@ -82,6 +82,19 @@
                     }
                 });
     });
+
+    document.getElementById('searchInput').addEventListener('input', function () {
+            var searchTerm = this.value.toLowerCase();
+
+            markersLayer.clearLayers(); // Clear existing markers
+
+            var filteredMarkers = csvLines.data.filter(function (data) {
+                return data['First Name'].toLowerCase().includes(searchTerm) ||
+                    data['Last Name'].toLowerCase().includes(searchTerm);
+            });
+
+            addMarkers(filteredMarkers);
+        });
 
     
     var map = L.map('map').setView([42.982521, -117.054526], 18);
