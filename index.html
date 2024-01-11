@@ -51,18 +51,16 @@
 <script>
  
     document.addEventListener('DOMContentLoaded', function () {
-        // Specify the path to your CSV file
         fetch('./CemetaryList.csv')
             .then(response => response.text())
             .then(contents => {
-                // Split the CSV data into lines
-                csvLines = contents.split('\n');
-                csvLines = csvLines.map(line => line.split(','));
+                //Parse it into an array
                 Papa.parse(contents, {
                         header: true, // Set to true if your CSV has a header row
                         complete: function(results) {
                             // Access the parsed data
-                            var csvLines = results.data;
+                            //attempting to make it a global variable
+                            let csvLines = results.data;
 
                         },
                         error: function(error) {
@@ -80,7 +78,7 @@
                     var textlist = [];
                     var coorlist = [];
                     var markerlist = [];
-                    for (let i = 1; i < csvLines.length; i++) {
+                    for (let i = 0; i < csvLines.length; i++) {
                         textlist.push(csvLines[i][0]+', '+csvLines[i][2]);
                         coorlist.push([csvLines[i][6], csvLines[i][7]]);
                     }
