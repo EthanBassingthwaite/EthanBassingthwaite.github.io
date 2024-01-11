@@ -51,11 +51,12 @@
 <script>
  
     document.addEventListener('DOMContentLoaded', function () {
+        let csvLines;
         fetch('./CemetaryList.csv')
             .then(response => response.text())
             .then(contents => {
                 //Parse it into an array
-                let csvLines = Papa.parse(contents, {
+                csvLines = Papa.parse(contents, {
                         header: true
                 });
             })
