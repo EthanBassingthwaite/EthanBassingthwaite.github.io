@@ -49,10 +49,11 @@
 
 
 <script>
+    //create the map and its coordinates
     var map = L.map('map').setView([42.982521, -117.054526], 18);
-    map.setMaxBounds(map.getBounds());
+    map.setMaxBounds(map.getBounds());//this makes the total map bounds just what the initial image was, easy solution and I am lazy.
     let markersLayer = new L.LayerGroup().addTo(map);
-    let csvLinves
+    let csvLinves //global variables to let me manipulate which markers appear and use 
 
     function addMarkers(data) {
         var myIcon = L.icon({
@@ -87,20 +88,23 @@
                 addMarkers(csvLines);
             })
             .catch(error => console.error('Error fetching the file:', error));
+    
+    
+        document.getElementById('searchInput').addEventListener('input', function () {
+        var searchTerm = this.value.toLowerCase();
+
+        markersLayer.clearLayers(); // Clear existing markers
+
+        var filteredMarkers = csvLines.data.filter(function (data) {
+            return data['First Name'].toLowerCase().includes(searchTerm) ||
+                   data['Last Name' ].toLowerCase().includes(searchTerm);
+        });
+
+        addMarkers(filteredMarkers);
+        });
     });
 
-    document.getElementById('searchInput').addEventListener('input', function () {
-            var searchTerm = this.value.toLowerCase();
 
-            markersLayer.clearLayers(); // Clear existing markers
-
-            var filteredMarkers = csvLines.data.filter(function (data) {
-                return data['First Name'].toLowerCase().includes(searchTerm) ||
-                       data['Last Name' ].toLowerCase().includes(searchTerm);
-            });
-
-            addMarkers(filteredMarkers);
-    });
 
     
     
