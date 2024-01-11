@@ -95,7 +95,7 @@
 
         markersLayer.clearLayers(); // Clear existing markers
 
-        var filteredMarkers = csvLines.data.filter(function (data) {
+        var filteredMarkers = csvLines.filter(function (data) {
             return data['First Name'].toLowerCase().includes(searchTerm) ||
                    data['Last Name' ].toLowerCase().includes(searchTerm);
         });
