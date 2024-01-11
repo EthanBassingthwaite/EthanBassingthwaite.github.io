@@ -55,18 +55,8 @@
             .then(response => response.text())
             .then(contents => {
                 //Parse it into an array
-                Papa.parse(contents, {
-                        header: true, // Set to true if your CSV has a header row
-                        complete: function(results) {
-                            // Access the parsed data
-                            //attempting to make it a global variable
-                            let csvLines = results.data;
-
-                        },
-                        error: function(error) {
-                            console.error('Error parsing the CSV:', error.message);
-                        }
-                });
+                let csvLines = Papa.parse(contents, {
+                        header: true
             })
             .catch(error => console.error('Error fetching the file:', error))
             .finally(() => {
@@ -82,7 +72,7 @@
                         textlist.push(csvLines[i][0]+', '+csvLines[i][1]);
                         coorlist.push([csvLines[i][6], csvLines[i][7]]);
                     }
-                    console.log(textlist);
+                    console.log(coorlist);
                     for (let i = 0; i < coorlist.length; i++) {
                         markerlist.push(L.marker(coorlist[i], {icon: myIcon}));
                         markerlist[i].bindPopup(textlist[i]).openPopup().addTo(map);
