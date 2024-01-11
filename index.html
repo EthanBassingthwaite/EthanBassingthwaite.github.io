@@ -72,8 +72,8 @@
                     var coorlist = [];
                     var markerlist = [];
                     for (let i = 0; i < csvLines.length; i++) {
-                        textlist.push(csvLines[i][0]+', '+csvLines[i][1]);
-                        coorlist.push([csvLines[i][3], csvLines[i][4]]);
+                        textlist.push(csvLines[i]['Last Name']+', '+csvLines[i]['First Name']);
+                        coorlist.push([csvLines[i]['GPS 1'], csvLines[i]['GPS 2']]);
                     }
                     console.log(coorlist);
                     for (let i = 0; i < coorlist.length; i++) {
