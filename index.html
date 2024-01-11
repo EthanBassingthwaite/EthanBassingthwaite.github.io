@@ -75,7 +75,7 @@
                         textlist.push(csvLines[i][0]+', '+csvLines[i][1]);
                         coorlist.push([csvLines[i][3], csvLines[i][4]]);
                     }
-                    console.log(csvLines);
+                    console.log(coorlist);
                     for (let i = 0; i < coorlist.length; i++) {
                         markerlist.push(L.marker(coorlist[i], {icon: myIcon}));
                         markerlist[i].bindPopup(textlist[i]).openPopup().addTo(map);
