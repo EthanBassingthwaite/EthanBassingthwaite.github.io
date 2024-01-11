@@ -59,6 +59,7 @@
                 csvLines = Papa.parse(contents, {
                         header: true
                 });
+                console.log('set csvlines')
             })
             .catch(error => console.error('Error fetching the file:', error))
             .finally(() => {
@@ -74,7 +75,7 @@
                         textlist.push(csvLines[i][0]+', '+csvLines[i][1]);
                         coorlist.push([csvLines[i][6], csvLines[i][7]]);
                     }
-                    console.log(coorlist);
+                    console.log(csvLines);
                     for (let i = 0; i < coorlist.length; i++) {
                         markerlist.push(L.marker(coorlist[i], {icon: myIcon}));
                         markerlist[i].bindPopup(textlist[i]).openPopup().addTo(map);
