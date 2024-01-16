@@ -76,6 +76,12 @@
             markerlist.push(L.marker(coorlist[i], {icon: myIcon, draggable: true}));
             markerlist[i].bindPopup(textlist[i]).openPopup().addTo(markersLayer);
         }
+
+        markerlist.forEach(function(marker) {
+            marker.on('dragend', function() {
+                console.log(markerLatLng.toString());
+            });
+        });
     }
 
     document.addEventListener('DOMContentLoaded', function () {
@@ -105,11 +111,7 @@
             addMarkers(filteredMarkers);
         });
 
-        markerlist.forEach(function(marker) {
-            marker.on('dragend', function() {
-                console.log(markerLatLng.toString());
-            });
-        });
+        
 
     });
 
