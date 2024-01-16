@@ -79,7 +79,7 @@
 
         markerlist.forEach(function(marker) {
             marker.on('dragend', function() {
-                console.log(markerLatLng.toString());
+                console.log(marker.getLatLng().toString());
             });
         });
     }
