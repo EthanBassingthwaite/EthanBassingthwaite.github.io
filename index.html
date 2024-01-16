@@ -73,7 +73,7 @@
         }
     
         for (let i = 0; i < coorlist.length; i++) {
-            markerlist.push(L.marker(coorlist[i], { icon: myIcon }));
+            markerlist.push(L.marker(coorlist[i], {icon: myIcon, draggable: true}));
             markerlist[i].bindPopup(textlist[i]).openPopup().addTo(markersLayer);
         }
     }
@@ -93,17 +93,24 @@
     
     
         document.getElementById('searchInput').addEventListener('input', function () {
-        var searchTerm = this.value.toLowerCase();
+            var searchTerm = this.value.toLowerCase();
 
-        markersLayer.clearLayers(); // Clear existing markers
+            markersLayer.clearLayers(); // Clear existing markers
 
-        var filteredMarkers = csvLines.filter(function (data) {
-            return data['First Name'].toLowerCase().includes(searchTerm) ||
-                   data['Last Name' ].toLowerCase().includes(searchTerm);
+            var filteredMarkers = csvLines.filter(function (data) {
+                return data['First Name'].toLowerCase().includes(searchTerm) ||
+                       data['Last Name' ].toLowerCase().includes(searchTerm);
+            });
+
+            addMarkers(filteredMarkers);
         });
 
-        addMarkers(filteredMarkers);
+        markerList.forEach(function(marker) {
+            marker.on('dragend', function() {
+                console.log(markerLatLng.toString());
+            });
         });
+
     });
 
 
