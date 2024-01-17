@@ -32,30 +32,12 @@
             border: 1px solid red;
             border-radius: 5px;
         }
-
-        .container {
-            width: 300px;
-            height: 100vh; /* Set a fixed height for the container */
-            overflow-y: auto; /* Enable vertical scrolling */
-            border: 1px solid #ccc;
-        }
-
-        .list {
-          padding: 10px;
-        }
     </style>
 </head>
 
 <body>
     <div id="map">
         <div class="leaflet-control coordinate"></div>
-        <ul class="list">
-            <!-- Your list items go here -->
-            <li>Item 1</li>
-            <li>Item 2</li>
-            <li>Item 3</li>
-            <!-- Add more items as needed -->
-          </ul>
     </div>
 </body>
 
@@ -158,6 +140,21 @@
 
 
 
+    /*==============================================
+                        MARKER
+    ================================================*/
+    /*var myIcon = L.icon({
+        iconUrl: 'icon.png',
+        iconSize: [10, 10],
+    });
+    var textlist = ['Grave 1', 'Grave 2', 'Grave 3'];
+    var coorlist = [[42.982821, -117.054826], [42.982822, -117.054836], [42.982829, -117.054818]];
+    var markerlist = [];
+    for (let i = 0; i < coorlist.length; i++) {
+          markerlist.push(L.marker(coorlist[i], {icon: myIcon}));
+          markerlist[i].bindPopup(textlist[i]).openPopup().addTo(map);
+    }
+    */
 
 
 
