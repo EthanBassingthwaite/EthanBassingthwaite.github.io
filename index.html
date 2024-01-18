@@ -10,16 +10,14 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <input type="text" id="searchInput" placeholder="Search...">
     <style>
-        body {
+            body {
             margin: 0;
             padding: 0;
         }
 
         #map {
-            display: inline-block;
-            width: 90%;
-            height: 100%;
-            margin-right: 10%;
+            width: 100%;
+            height: 100vh;
         }
 
         .coordinate {
@@ -35,12 +33,7 @@
             border-radius: 5px;
         }
 
-        .container {
-            display: inline-block;
-            margin-right: -4px;
-            width: 100vb;
-            height: 100%;
-        }
+
 
         #maplist {
             display: inline-block;
@@ -52,7 +45,7 @@
 </head>
 
 <body>
-    <div id="container">
+
         <div id="map">
             <div class="leaflet-control coordinate"></div>
         </div>
@@ -62,7 +55,7 @@
                 <li>Lists stuff5</li>
                 <!-- Add more list items as needed -->
         </div>
-    </div>
+
 </body>
 
 </html>
