@@ -37,7 +37,8 @@
         #maplist {
             overflow-y: auto; /* Enable vertical scrollbar if content exceeds height */
             width: 10%; /* Adjust the width of the scrollable list */ 
-            height: 100%;   
+            height: 100%;  
+            list-style: none; 
         }
 
         .container {
@@ -68,7 +69,7 @@
             <div id ="maplist">
                 <li style="border: 1px solid black;">List Item 1</li>
                 <li>List Item 2</li>
-                <li>"<img src="icon.png" alt="Image" width="20" height="100%">"</li>
+                <li><img src="icon.png" alt="Image" width="20" height="100%"></li>
                 <!-- Add more list items as needed -->
             </div>
         </div>
@@ -90,6 +91,7 @@
     let csvLinves //global variables to let me manipulate which markers appear and use 
     const listItems = document.getElementById('maplist');
     console.log(listItems.innerHTML);
+
     function addMarkers(data) {
         var myIcon = L.icon({
             iconUrl: 'icon.png',
@@ -101,7 +103,7 @@
         var markerlist = [];
 
         for (let i = 0; i < data.length; i++) {
-            textlist.push('<img src="icon.png" alt="Image" width="20" height="100%">' +
+            textlist.push('<img src="icon.png" alt="Image" width="20px" height="100%">' + '<br>' +
                            data[i]['Last Name'] + ', ' + data[i]['First Name'] + '<br>' +
                            data[i]['Date of Birth'] +','+data[i]['Date of Death']);
             coorlist.push([data[i]['GPS 1'], data[i]['GPS 2']]);
@@ -118,13 +120,13 @@
             });
         });
         
-        /*
-        for (let i = 0; i < coorlist.length; i++) {
+        
+        for (let i = 0; i < textlist.length; i++) {
             const li = document.createElement('li');
-            li.textContent = item;
+            li.textContent = textlist[i];
             listItems.appendChild(li);
         }
-        */
+        
 
     }
 
