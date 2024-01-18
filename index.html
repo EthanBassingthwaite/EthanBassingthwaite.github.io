@@ -76,8 +76,8 @@
     map.setMaxBounds(map.getBounds());//this makes the total map bounds just what the initial image was, easy solution and I am lazy.
     let markersLayer = new L.LayerGroup().addTo(map);
     let csvLinves //global variables to let me manipulate which markers appear and use 
-    const listItems = document.getElementById('listItems');
-    console.log(listItems);
+    const listItems = document.getElementById('maplist');
+    console.log(listItems.innerHTML);
     function addMarkers(data) {
         var myIcon = L.icon({
             iconUrl: 'icon.png',
