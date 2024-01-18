@@ -124,6 +124,10 @@
             const li = document.createElement('li');
             li.innerHTML = textlist[i];
             li.style.border = '1px solid #000';
+            li.addEventListener('click', function() {
+                map.setView([data[i]['Latitude'], data[i]['Longitude']], 20);
+                markerlist[i].openPopup();
+            });
             listItems.appendChild(li);
         }
         
