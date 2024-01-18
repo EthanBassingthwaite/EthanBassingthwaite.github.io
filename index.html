@@ -46,6 +46,13 @@
             width: 1200px;
         }
 
+        .list_container {
+            position: relative;
+            height: 100%;
+            width: 100%;
+        }
+       
+
     </style>
 </head>
 
@@ -55,12 +62,14 @@
         <div id="map">
             <div class="leaflet-control coordinate"></div>
         </div>
-        <input type="text" id="searchInput" placeholder="Search...">
-        <div id ="maplist">
-                <li>List Item 1</li>
-                <li>List Item 2</li>
-                <li>Lists stuff5</li>
-                <!-- Add more list items as needed -->
+        <div class = "list_container">
+            <input type="text" id="searchInput" placeholder="Search...">
+            <div id ="maplist">
+                    <li>List Item 1</li>
+                    <li>List Item 2</li>
+                    <li>Lists stuff5</li>
+                    <!-- Add more list items as needed -->
+            </div>
         </div>
     </div>
 </body>
