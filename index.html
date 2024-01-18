@@ -55,7 +55,7 @@
             <ul>
                 <li>List Item 1</li>
                 <li>List Item 2</li>
-                <li>Lists stuff</li>
+                <li>Lists stuff2</li>
                 <!-- Add more list items as needed -->
             </ul>
         </div>
@@ -75,7 +75,8 @@
     map.setMaxBounds(map.getBounds());//this makes the total map bounds just what the initial image was, easy solution and I am lazy.
     let markersLayer = new L.LayerGroup().addTo(map);
     let csvLinves //global variables to let me manipulate which markers appear and use 
-
+    const listItems = document.getElementById('listItems');
+    console.log(listItems);
     function addMarkers(data) {
         var myIcon = L.icon({
             iconUrl: 'icon.png',
@@ -106,7 +107,8 @@
     }
 
     document.addEventListener('DOMContentLoaded', function () {
-        fetch('./CemetaryList.csv')
+        
+        fetch('./CemetaryList.csv')//Getting cav values
             .then(response => response.text())
             .then(contents => {
                 //Parse it into an array
@@ -118,7 +120,7 @@
             })
             .catch(error => console.error('Error fetching the file:', error));
     
-    
+        
         document.getElementById('searchInput').addEventListener('input', function () {
             var searchTerm = this.value.toLowerCase();
 
