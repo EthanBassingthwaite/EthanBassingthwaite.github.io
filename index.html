@@ -149,7 +149,7 @@
             var searchTerm = this.value.toLowerCase();
 
             markersLayer.clearLayers(); // Clear existing markers
-
+            list.innerHTML = ''; //Clear out the search bar
             var filteredMarkers = csvLines.filter(function (data) {
                 return data['First Name'].toLowerCase().includes(searchTerm) ||
                        data['Last Name' ].toLowerCase().includes(searchTerm);
