@@ -101,19 +101,20 @@
             markerlist.push(L.marker(coorlist[i], {icon: myIcon, draggable: true}));
             markerlist[i].bindPopup(textlist[i]).openPopup().addTo(markersLayer);
         }
-        /*
+        
         markerlist.forEach(function(marker) {
             marker.on('dragend', function() {
                 console.log(marker.getLatLng().toString());
             });
         });
-        */
         
+        /*
         for (let i = 0; i < coorlist.length; i++) {
             const li = document.createElement('li');
             li.textContent = item;
             listItems.appendChild(li);
         }
+        */
 
     }
 
