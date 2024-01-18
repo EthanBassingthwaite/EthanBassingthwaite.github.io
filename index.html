@@ -85,7 +85,12 @@
 <script>
     //create the map and its coordinates
     var map = L.map('map').setView([42.982521, -117.054526], 18);
-    map.setMaxBounds(map.getBounds());//this makes the total map bounds just what the initial image was, easy solution and I am lazy.
+    //map.setMaxBounds(map.getBounds());//this makes the total map bounds just what the initial image was, easy solution and I am lazy.
+    
+    ///////////////////////////////////////////
+        //Commented out max bounds for ambrose bugfixing
+    //////////////////
+
     let markersLayer = new L.LayerGroup().addTo(map);
     let csvLinves //global variables to let me manipulate which markers appear and use 
     const listItems = document.getElementById('maplist');
@@ -173,8 +178,8 @@
     
     //google satellite
     googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
-        //maxZoom: 22, //Commented out for bugfixing
-        minZoom: 17,
+        maxZoom: 22, 
+        //minZoom: 17, //Commented out for bugfixing
         subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
     });
     googleSat.addTo(map)
