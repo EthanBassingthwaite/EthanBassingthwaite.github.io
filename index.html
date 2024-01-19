@@ -107,7 +107,8 @@
         var markerlist = [];
 
         for (let i = 0; i < data.length; i++) {
-            popuptext = '<img src="icon.png" alt="Image" width="30px" height="100%" style="vertical-align: text-top;">';
+            filepath = "images/" + data[i]['Marker Photo']
+            popuptext = '<img src="'+ filepath + '" alt="Image" width="30px" height="100%" style="vertical-align: text-top;">';
             //popuptext += '<br>';
             popuptext += data[i]['Last Name'] + ', ' + data[i]['First Name'] + '<br>';
             popuptext += data[i]['Date of Birth'] +','+data[i]['Date of Death'];
