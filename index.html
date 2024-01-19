@@ -8,7 +8,7 @@
 
     <!-- leaflet css  -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-    <input type="text" id="searchInput" placeholder="Search...">
+ 
     <style>
         body {
             margin: 0;
@@ -16,12 +16,13 @@
         }
 
         #map {
-            width: 100%;
-            height: 100vh;
+            position: absolute;
+            height: inherit; 
+            width: 80%;
         }
 
         .coordinate {
-            position: absolute;
+            position: relative;
             bottom: 10px;
             right: 50%;
         }
@@ -32,12 +33,45 @@
             border: 1px solid red;
             border-radius: 5px;
         }
+
+        #maplist {
+            overflow-y: auto; 
+            width: 100%;
+            height: 100%;  
+            list-style: none; 
+        }
+
+        .container {
+            position: relative;
+            height: 100vh;
+            width: 1200px;
+        }
+
+        .list_container {
+            position: relative;
+            margin-left: 80%;
+            height: 100%;
+            width: 20%;
+        }
+
+        #searchInput {
+            width: 100%; 
+        }
+       
     </style>
 </head>
 
 <body>
-    <div id="map">
-        <div class="leaflet-control coordinate"></div>
+    <div class="container">
+        
+        <div id="map">
+            <div class="leaflet-control coordinate"></div>
+        </div>
+        <div class = "list_container">
+            <input type="text" id="searchInput" placeholder="Search by First or Last name...">
+            <div id ="maplist">
+            </div>
+        </div>
     </div>
 </body>
 
@@ -51,9 +85,16 @@
 <script>
     //create the map and its coordinates
     var map = L.map('map').setView([42.982521, -117.054526], 18);
-    map.setMaxBounds(map.getBounds());//this makes the total map bounds just what the initial image was, easy solution and I am lazy.
+    //map.setMaxBounds(map.getBounds());//this makes the total map bounds just what the initial image was, easy solution and I am lazy.
+    
+    ///////////////////////////////////////////
+        //Commented out max bounds for ambrose bugfixing
+    //////////////////
+
     let markersLayer = new L.LayerGroup().addTo(map);
     let csvLinves //global variables to let me manipulate which markers appear and use 
+    const listItems = document.getElementById('maplist');
+    console.log(listItems.innerHTML);
 
     function addMarkers(data) {
         var myIcon = L.icon({
@@ -66,18 +107,44 @@
         var markerlist = [];
 
         for (let i = 0; i < data.length; i++) {
-            textlist.push(data[i]['Last Name'] + ', ' + data[i]['First Name']);
+            filepath = "images/" + data[i]['Marker Photo'];
+            popuptext = '<img src="images/_MG_3377.JPG" alt="Image" width="30px" height="100%" style="vertical-align: text-top;">';
+            //popuptext += '<br>';
+            popuptext += data[i]['Last Name'] + ', ' + data[i]['First Name'] + '<br>';
+            popuptext += data[i]['Date of Birth'] +','+data[i]['Date of Death'];
+            textlist.push(popuptext);
             coorlist.push([data[i]['GPS 1'], data[i]['GPS 2']]);
         }
     
         for (let i = 0; i < coorlist.length; i++) {
-            markerlist.push(L.marker(coorlist[i], { icon: myIcon }));
+            markerlist.push(L.marker(coorlist[i], {icon: myIcon, draggable: true}));
             markerlist[i].bindPopup(textlist[i]).openPopup().addTo(markersLayer);
         }
+        
+        markerlist.forEach(function(marker) {
+            marker.on('dragend', function() {
+                console.log(marker.getLatLng().toString());
+            });
+        });
+        
+        
+        for (let i = 0; i < textlist.length; i++) {
+            const li = document.createElement('li');
+            li.innerHTML = textlist[i];
+            li.style.border = '1px solid #000';
+            li.addEventListener('click', function() {
+                map.setView(coorlist[i], 20);
+                markerlist[i].openPopup();
+            });
+            listItems.appendChild(li);
+        }
+        
+
     }
 
     document.addEventListener('DOMContentLoaded', function () {
-        fetch('./CemetaryList.csv')
+        
+        fetch('./CemetaryList.csv')//Getting cav values
             .then(response => response.text())
             .then(contents => {
                 //Parse it into an array
@@ -89,19 +156,21 @@
             })
             .catch(error => console.error('Error fetching the file:', error));
     
-    
+        
         document.getElementById('searchInput').addEventListener('input', function () {
-        var searchTerm = this.value.toLowerCase();
+            var searchTerm = this.value.toLowerCase();
+            markersLayer.clearLayers(); // Clear existing markers
+            listItems.innerHTML = ''; //Clear out the search bar
+            var filteredMarkers = csvLines.filter(function (data) {
+                return data['First Name'].toLowerCase().includes(searchTerm) ||
+                       data['Last Name' ].toLowerCase().includes(searchTerm);
+            });
 
-        markersLayer.clearLayers(); // Clear existing markers
-
-        var filteredMarkers = csvLines.filter(function (data) {
-            return data['First Name'].toLowerCase().includes(searchTerm) ||
-                   data['Last Name' ].toLowerCase().includes(searchTerm);
+            addMarkers(filteredMarkers);
         });
 
-        addMarkers(filteredMarkers);
-        });
+        
+
     });
 
 
@@ -112,8 +181,8 @@
     
     //google satellite
     googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
-        maxZoom: 22,
-        minZoom: 17,
+        maxZoom: 22, 
+        //minZoom: 17, //Commented out for bugfixing
         subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
     });
     googleSat.addTo(map)
@@ -129,21 +198,6 @@
 
 
 
-    /*==============================================
-                        MARKER
-    ================================================*/
-    /*var myIcon = L.icon({
-        iconUrl: 'icon.png',
-        iconSize: [10, 10],
-    });
-    var textlist = ['Grave 1', 'Grave 2', 'Grave 3'];
-    var coorlist = [[42.982821, -117.054826], [42.982822, -117.054836], [42.982829, -117.054818]];
-    var markerlist = [];
-    for (let i = 0; i < coorlist.length; i++) {
-          markerlist.push(L.marker(coorlist[i], {icon: myIcon}));
-          markerlist[i].bindPopup(textlist[i]).openPopup().addTo(map);
-    }
-    */
 
 
 
