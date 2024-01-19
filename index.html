@@ -107,8 +107,7 @@
         var markerlist = [];
 
         for (let i = 0; i < data.length; i++) {
-            popuptext = '<img src="icon.png" style="vertical-align:bottom"; alt = "Image"; width:20px; height:100%;">This 44444is one line of text with image on the left side hopefully';
-            //popuptext += '<img src="icon.png" alt="Image" width="20px" height="100%">';
+            popuptext = '<img src="icon.png" alt="Image" width="20px" height="100%" style="vertical-align:top">';
             popuptext += '<br>';
             popuptext += data[i]['Last Name'] + ', ' + data[i]['First Name'] + '<br>';
             popuptext += data[i]['Date of Birth'] +','+data[i]['Date of Death'];
