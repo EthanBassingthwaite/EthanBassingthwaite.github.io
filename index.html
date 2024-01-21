@@ -111,9 +111,10 @@
             popuptext = '<img src="' + filepath + '" alt="Image" width="30px" height="100%" style="vertical-align: text-top;">';
             popuptext += '<br>';
             popuptext += data[i]['Last Name'] + ', ' + data[i]['First Name'] + '<br>';
-            if (data[i]['Middle Name'] != '')){
-                popuptext += ' ' + data[i]['Middle Name'];
+            if (data[i]['Maiden Name'] != ''){
+                popuptext += 'Maiden Name: ' + data[i]['Maiden Name'] + '<br>';
             }
+
             popuptext += data[i]['Date of Birth'] +','+data[i]['Date of Death'];
             textlist.push(popuptext);
             coorlist.push([data[i]['GPS 1'], data[i]['GPS 2']]);
