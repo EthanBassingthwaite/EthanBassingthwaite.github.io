@@ -73,8 +73,6 @@
             vertical-align: top;
         }
 
-        #imgDiv{height:200px;width:200px;float:left;}
-        #txtDiv{height:200px;width:200px;float:left;}
        
     </style>
 </head>
@@ -140,9 +138,9 @@
             coorlist.push([data[i]['GPS 1'], data[i]['GPS 2']]);
 
             searchtext = '<img src="' + filepath + '" alt="Image" class="list_image">';
-            searchtext += '<div id="list_text"> <p>';
-            searchtext += data[i]['Last Name'] + ', ' + data[i]['First Name'] + "</p>" +'</div>';
-            searchtext = '<div id="imgDiv"><img src="http://placekitten.com/g/200/200" /></div><div id="txtDiv"><p>text one</p><p>text two</p></div>';
+            searchtext += '<div class="list_text"> <p>';
+            searchtext += data[i]['Last Name'] + ', ' + data[i]['First Name'] + "</p><p>";
+            searchtext += data[i]['Date of Birth'] +','+data[i]['Date of Death'] +'</p></div>';
             searchlist.push(searchtext);
         }
         
