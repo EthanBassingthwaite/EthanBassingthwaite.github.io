@@ -103,7 +103,6 @@
 
 <script>
     //create the map and its coordinates
-    console.log('Changes added, did the csv update?');
     var map = L.map('map').setView([42.982521, -117.054526], 18);
     //map.setMaxBounds(map.getBounds());//this makes the total map bounds just what the initial image was, easy solution and I am lazy.
     
@@ -113,7 +112,6 @@
 
     let markersLayer = new L.LayerGroup().addTo(map);
     const listItems = document.getElementById('maplist');
-    console.log(listItems.innerHTML);
 
     function addMarkers(data) {
         var myIcon = L.icon({
