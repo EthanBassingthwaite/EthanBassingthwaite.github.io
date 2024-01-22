@@ -28,9 +28,9 @@
         }
 
         .leaflet-popup-content-wrapper {
-            background-color: #000000;
+            background-color: #f6fad1;
             color: #fff;
-            border: 1px solid red;
+            border: 1px solid rgb(252, 255, 74);
             border-radius: 5px;
         }
 
@@ -57,6 +57,25 @@
         #searchInput {
             width: 100%; 
         }
+
+        .list_text {
+            display: inline-block;
+        }
+
+        .list_image {
+            height: 40px;
+            width: 100%;
+            display: inline-block;
+            vertical-align: top;
+        }
+        .popup_image {
+            height: 100px;
+            width: 100%;
+            display: inline-block;
+            vertical-align: top;
+        }
+
+
        
     </style>
 </head>
@@ -109,16 +128,23 @@
 
         for (let i = 0; i < data.length; i++) {
             filepath = "images/" + data[i]['Marker Photo'];
-            popuptext = '<img src="' + filepath + '" alt="Image" width="30px" height="100%" style="vertical-align: text-top;">';
+            popuptext = '<img src="' + filepath + '" alt="Image" class="popup_image">';
+            if (data[i]['Photo_Military'] != ''){
+                popuptext += '<img src="' + 'images/' + data[i]['Photo_Military'] + '" alt="Image" class="popup_image">';
+            }
             popuptext += '<br>';
             popuptext += data[i]['Last Name'] + ', ' + data[i]['First Name'] + '<br>';
             if (data[i]['Maiden Name'] != ''){
                 popuptext += 'Maiden Name: ' + data[i]['Maiden Name'] + '<br>';
             }
-
             popuptext += data[i]['Date of Birth'] +','+data[i]['Date of Death'];
             textlist.push(popuptext);
             coorlist.push([data[i]['GPS 1'], data[i]['GPS 2']]);
+
+            
+
+
+
         }
     
         for (let i = 0; i < coorlist.length; i++) {
