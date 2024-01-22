@@ -73,7 +73,8 @@
             vertical-align: top;
         }
 
-
+        #imgDiv{height:200px;width:200px;float:left;}
+        #txtDiv{height:200px;width:200px;float:left;}
        
     </style>
 </head>
@@ -141,6 +142,7 @@
             searchtext = '<img src="' + filepath + '" alt="Image" class="list_image">';
             searchtext += '<div id="list_text"> <p>';
             searchtext += data[i]['Last Name'] + ', ' + data[i]['First Name'] + "</p>" +'</div>';
+            searchtext = '<div id="imgDiv"><img src="http://placekitten.com/g/200/200" /></div><div id="txtDiv"><p>text one</p><p>text two</p></div>';
             searchlist.push(searchtext);
         }
         
