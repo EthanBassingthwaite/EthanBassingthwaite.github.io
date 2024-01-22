@@ -128,7 +128,7 @@
         for (let i = 0; i < data.length; i++) {
             filepath = "images/" + data[i]['Marker Photo'];
             popuptext = '<img src="' + filepath + '" alt="Image" class="popup_image">';
-            if (data[i]['Photo_Military'] != ''){
+            if (data[i]['Photo_Military'] != undefined){
                 console.log(data[i]['Last Name'] + ', ' + data[i]['First Name'] + data[i]['Photo_Military']);
                 popuptext += '<img src="' + 'images/' + data[i]['Photo_Military'] + '" alt="Image" class="popup_image">';
             }
