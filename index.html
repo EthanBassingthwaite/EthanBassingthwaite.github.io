@@ -130,6 +130,7 @@
             filepath = "images/" + data[i]['Marker Photo'];
             popuptext = '<img src="' + filepath + '" alt="Image" class="popup_image">';
             if (data[i]['Photo_Military'] != ''){
+                print(data[i]['Last Name'] + ', ' + data[i]['First Name']);
                 popuptext += '<img src="' + 'images/' + data[i]['Photo_Military'] + '" alt="Image" class="popup_image">';
             }
             popuptext += '<br>';
@@ -141,7 +142,9 @@
             textlist.push(popuptext);
             coorlist.push([data[i]['GPS 1'], data[i]['GPS 2']]);
 
-            
+            searchtext = '<img src="' + filepath + '" alt="Image" class="list_image">';
+            searchtext += '<div id="list_text"> <p>'
+
 
 
 
