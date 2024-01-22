@@ -29,7 +29,7 @@
 
         .leaflet-popup-content-wrapper {
             background-color: #f6fad1;
-            color: #fff;
+            color: #000000;
             border: 1px solid rgb(252, 255, 74);
             border-radius: 5px;
         }
@@ -112,7 +112,6 @@
     //////////////////
 
     let markersLayer = new L.LayerGroup().addTo(map);
-    let csvLinves //global variables to let me manipulate which markers appear and use 
     const listItems = document.getElementById('maplist');
     console.log(listItems.innerHTML);
 
@@ -125,6 +124,7 @@
         var textlist = [];
         var coorlist = [];
         var markerlist = [];
+        var searchlist = [];
 
         for (let i = 0; i < data.length; i++) {
             filepath = "images/" + data[i]['Marker Photo'];
@@ -143,28 +143,27 @@
             coorlist.push([data[i]['GPS 1'], data[i]['GPS 2']]);
 
             searchtext = '<img src="' + filepath + '" alt="Image" class="list_image">';
-            searchtext += '<div id="list_text"> <p>'
-
-
-
-
+            searchtext += '<div id="list_text"> <p>';
+            searchtext += data[i]['Last Name'] + ', ' + data[i]['First Name'] + "</p>";
+            searchtext += '<p>' + data[i]['Date of Birth'] +','+data[i]['Date of Death'] + '</p>';
+            searchlist.push(searchtext);
         }
     
         for (let i = 0; i < coorlist.length; i++) {
             markerlist.push(L.marker(coorlist[i], {icon: myIcon, draggable: true}));
             markerlist[i].bindPopup(textlist[i]).openPopup().addTo(markersLayer);
         }
-        
+        //Code to let us align the markers with the actual graves
         markerlist.forEach(function(marker) {
             marker.on('dragend', function() {
                 console.log(marker.getLatLng().toString());
             });
         });
         
-        
-        for (let i = 0; i < textlist.length; i++) {
+        //Making the list
+        for (let i = 0; i < searchlist.length; i++) {
             const li = document.createElement('li');
-            li.innerHTML = textlist[i];
+            li.innerHTML = searchlist[i];
             li.style.border = '1px solid #000';
             li.addEventListener('click', function() {
                 map.setView(coorlist[i], 20);
