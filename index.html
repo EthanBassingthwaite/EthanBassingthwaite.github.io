@@ -138,8 +138,7 @@
             textlist.push(popuptext);
             coorlist.push([data[i]['GPS 1'], data[i]['GPS 2']]);
 
-            searchtext = '<img src="' + filepath + '" alt="Image" class="list_image">';
-            searchtext += '<div id="list_text"> <p>';
+            searchtext = '<div id="list_text"> <img src="' + filepath + '" alt="Image" class="list_image"> <p>';
             searchtext += data[i]['Last Name'] + ', ' + data[i]['First Name'] + "</p>";
             searchtext += '<p>' + data[i]['Date of Birth'] +','+data[i]['Date of Death'] + '</p></div>';
             searchlist.push(searchtext);
