@@ -63,7 +63,7 @@
         }
 
         .list_image {
-            height: 40px;
+            height: 30px;
             display: inline-block;
             vertical-align: top;
         }
@@ -128,7 +128,7 @@
             popuptext = '<img src="' + filepath + '" alt="Image" class="popup_image">';
             console.log(data[i]['Photo_Military'] + data[i]['Last Name'] + ', ' + data[i]['First Name']);
             if (data[i]['Photo_Military'] !== ''){
-                console.log(data[i]['Last Name'] + ', ' + data[i]['First Name'] + data[i]['Photo_Military']);
+                console.log(data[i]['Maiden Name'] + data[i]['Photo_Military']);
                 popuptext += '<img src="' + 'images/' + data[i]['Photo_Military'] + '" alt="Image" class="popup_image">';
             }
             popuptext += '<br>';
