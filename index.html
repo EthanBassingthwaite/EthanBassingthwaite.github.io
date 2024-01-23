@@ -46,16 +46,15 @@
             position: relative;
             height: 100vh;
             width: 1200px;
+            display: flex;
         }
 
         .list_container {
             position: relative;
-            display: flex;
             margin-left: 70%;
             height: 100%;
             width: 30%;
             flex-grow: 1;
-            resize: horizontal;
         }
 
         #searchInput {
@@ -172,7 +171,7 @@
             li.innerHTML = searchlist[i];
             li.classList.add("listclassformat");
             li.style.backgroundImage =  'url("images/' + data[i]['Marker Photo'] + '")'; 
-            li.style.backgroundSize = "50px";
+            li.style.backgroundSize = "20px";
             li.addEventListener('click', function() {
                 map.setView(coorlist[i], 20);
                 markerlist[i].openPopup();
