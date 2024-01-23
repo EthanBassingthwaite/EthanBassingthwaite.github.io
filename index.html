@@ -283,24 +283,9 @@
                 //minZoom: 17, //Commented out for bugfixing
                 subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
             });
-            googleSat.addTo(map)
-        
-            var wms = L.tileLayer.wms("http://localhost:8080/geoserver/wms", {
-                layers: 'geoapp:admin',
-                format: 'image/png',
-                transparent: true,
-                attribution: "wms test",
-                maxNativeZoom:19,
-                maxZoom:22
-            });
-        
-        
-        
-        
-        
-        
-        
-           
+            googleSat.addTo(map);
+
+
         </script>
     </body>
 </html>
