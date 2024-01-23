@@ -233,6 +233,7 @@
                     li.style.backgroundSize = "120px";
                     li.addEventListener('click', function() {
                         map.setView(coorlist[i], 20);
+                        console.log(markerlist[i])
                         markerlist[i].openPopup();
                     });
                     listItems.appendChild(li);
