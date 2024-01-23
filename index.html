@@ -164,7 +164,8 @@
         for (let i = 0; i < searchlist.length; i++) {
             const li = document.createElement('li');
             li.innerHTML = searchlist[i];
-            li.style.border = '1px solid #000';
+            li.style='list-style-image: url("icon.png")';
+
             li.addEventListener('click', function() {
                 map.setView(coorlist[i], 20);
                 markerlist[i].openPopup();
