@@ -172,7 +172,7 @@
             li.innerHTML = searchlist[i];
             li.classList.add("listclassformat");
             li.style.backgroundImage =  'url("images/' + data[i]['Marker Photo'] + '")'; 
-            li.style.backgroundSize = "20px";
+            li.style.backgroundSize = "50px";
             li.addEventListener('click', function() {
                 map.setView(coorlist[i], 20);
                 markerlist[i].openPopup();
