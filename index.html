@@ -74,7 +74,12 @@
             display: inline-block;
             vertical-align: top;
         }
-
+        .listclassformat {
+            list-style: none;
+            padding: 10px 30px;
+            background-repeat: no-repeat;
+            background-position: left center;
+        }
        
     </style>
 </head>
@@ -139,11 +144,8 @@
             textlist.push(popuptext);
             coorlist.push([data[i]['GPS 1'], data[i]['GPS 2']]);
 
-            searchtext = `<img src="${filepath}" alt="Image" class="list_image">
-                            <div class="list_text"> 
-                                <p>${data[i]['Last Name']}, ${data[i]['First Name']}</p>
-                                <p>${data[i]['Date of Birth']} &ndash; ${data[i]['Date of Death']}</p>
-                            </div>`
+            searchtext = `${data[i]['Last Name']}, ${data[i]['First Name']} 
+                            <br> ${data[i]['Date of Birth']} &ndash; ${data[i]['Date of Death']}`
             searchlist.push(searchtext);
         }
         
@@ -159,19 +161,20 @@
                 console.log(marker.getLatLng().toString());
             });
         });
-        
+
         //Making the list
         for (let i = 0; i < searchlist.length; i++) {
             const li = document.createElement('li');
             li.innerHTML = searchlist[i];
-            li.style.border = '1px solid #000';
+            li.classList.add("listclassformat");
+            li.style.backgroundImage =  'url("images/' + data[i]['Marker Photo'] + '")'; 
+            li.style.backgroundSize = "20px";
             li.addEventListener('click', function() {
                 map.setView(coorlist[i], 20);
                 markerlist[i].openPopup();
             });
             listItems.appendChild(li);
         }
-        
 
     }
 
