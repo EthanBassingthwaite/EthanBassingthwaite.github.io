@@ -214,6 +214,7 @@
                 for (let i = 0; i < coorlist.length; i++) {
                     markerlist.push(L.marker(coorlist[i], {icon: myIcon, draggable: true}));
                     markerlist[i].bindPopup(textlist[i]).openPopup().addTo(markersLayer);
+                    console.log(markerlist[i]);
                 }
         
                 //Code to let us align the markers with the actual graves
