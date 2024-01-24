@@ -89,9 +89,10 @@
             .CoIlogo{
                 position: absolute;
                 bottom: 0;
-                left: 17;
+                margin-left: calc(100% - 47px); /*left: 17px; was not working so this is the horrid solution that I made*/
                 z-index: 1; 
                 opacity: 0.4;
+                width: 30px;
             }
        
         </style>
@@ -140,7 +141,7 @@
                     <input type="text" id="searchInput" placeholder="Search by First or Last name...">
                     <div id ="maplist">
                     </div>
-                    <img src="CoILogo.png" class="CoIlogo" height="20px">
+                    <img src="CoILogo.png" class="CoIlogo">
                 </div>
                 
             </div>
