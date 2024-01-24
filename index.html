@@ -87,6 +87,17 @@
                 background-repeat: no-repeat;
                 background-position: left center;
             }
+            
+            .CoIlogo{
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 5%;
+                height: 5%;
+                object-fit: cover; /* Maintain aspect ratio while covering the container */
+                z-index: 1; /* Set a higher z-index to position it above other elements */
+                opacity: 0.4;
+            }
        
         </style>
         
@@ -135,6 +146,7 @@
                     <div id ="maplist">
                     </div>
                 </div>
+                <img class="CoILogo" src="CoILogo.png" alt="Overlay Image">
             </div>
         </section>
         <!-- Content section-->
