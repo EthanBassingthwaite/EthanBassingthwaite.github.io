@@ -233,7 +233,7 @@
                 //assigning the values to the markers
                 for (let i = 0; i < coorlist.length; i++) {
                     markerlist.push(L.marker(coorlist[i], {icon: myIcon, draggable: true}));
-                    markerlist[i].bindPopup(textlist[i]).openPopup().addTo(markersLayer);
+                    markerlist[i].bindPopup(textlist[i], {maxWidth : 600}).openPopup().addTo(markersLayer);
                 }
         
                 //Code to let us align the markers with the actual graves
