@@ -271,7 +271,7 @@
                 
                 //assigning the values to the markers
                 for (let i = 0; i < coorlist.length; i++) {
-                    markerlist.push(L.marker(coorlist[i], {icon: myIcon, draggable: true}));
+                    markerlist.push(L.marker(coorlist[i], {icon: myIcon, draggable: false}));
                     markerlist[i].bindPopup(textlist[i]).openPopup().addTo(markersLayer);
                 }
         
