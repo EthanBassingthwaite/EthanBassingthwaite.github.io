@@ -189,8 +189,8 @@
         <script>
             //create the map and its coordinates
             var map = L.map('map').setView([42.982521, -117.054526], 18);
-            map.setMaxBounds(map.getBounds());//this makes the total map bounds just what the initial image was, easy solution and I am lazy.
-            
+            //map.setMaxBounds(map.getBounds());//this makes the total map bounds just what the initial image was, easy solution and I am lazy.
+            //The setMaxBounds was annoying and I disliked it, so it is gone now. 
             
         
             let markersLayer = new L.LayerGroup().addTo(map);
