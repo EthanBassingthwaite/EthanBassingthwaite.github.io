@@ -36,6 +36,7 @@
                 color: #000000;
                 border: 1px solid rgb(252, 255, 74);
                 border-radius: 5px;
+                font-family: 'Georgia', 'Times New Roman', serif;
             }
 
             #maplist {
@@ -279,7 +280,7 @@
                 //assigning the values to the markers
                 for (let i = 0; i < coorlist.length; i++) {
                     markerlist.push(L.marker(coorlist[i], {icon: myIcon, draggable: false}));
-                    markerlist[i].bindPopup(textlist[i]).openPopup().addTo(markersLayer);
+                    markerlist[i].bindPopup(textlist[i], {maxWidth : 600}).openPopup().addTo(markersLayer);
                 }
         
                 //Code to let us align the markers with the actual graves
