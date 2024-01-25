@@ -101,7 +101,7 @@
             }
             .movablebox{
                 box-sizing: border-box;/* Allow box to grow and shrink, and ensure they are all equally sized */
-                flex: 1 1 auto;
+                flex: 4 1 auto;
             }
        
        
@@ -221,7 +221,7 @@
                 // Resize box A
                 // * 8px is the left/right spacing between .handler and its inner pseudo-element
                 // * Set flex-grow to 0 to prevent it from growing
-                boxA.style.width = (Math.max(boxAminWidth, pointerRelativeXpos - 8)) + 'px';
+                boxA.style.width = (Math.max(boxAminWidth, pointerRelativeXpos - 10)) + 'px';
                 boxA.style.flexGrow = 0;
             });
 
