@@ -197,6 +197,11 @@
                 }
             });
 
+            document.addEventListener('mouseup', function(e) {
+                // Turn off dragging flag when user mouse is up
+                isHandlerDragging = false;
+            });
+
             document.addEventListener('mousemove', function(e) {
                 // Don't do anything if dragging flag is false
                 if (!isHandlerDragging) {
