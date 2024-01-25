@@ -24,6 +24,7 @@
                 position: absolute;
                 height: 100%; 
                 width: 60%;
+                
             }
 
             .coordinate {
@@ -60,15 +61,14 @@
                 margin-left: calc(60% + 4px);
                 height: 100%;
                 width: calc(40% - 4px);  
+                
             }
-            #list_container::before {
-                content: '';
-                background-color: #bebebe;
-                position: absolute;
-                left: -4px;
-                width: 4px;
-                height: 100%;
-                /*cursor: ew-resize;*/
+            .dividingElement {
+                width: 5px;
+                padding: 0;
+                cursor: ew-resize;
+                flex: 0 0 auto;
+                color:#4f4752;
             }
 
             
@@ -104,6 +104,10 @@
                 opacity: 0.4;
                 width: 30px;
             }
+            .movablebox{
+                box-sizing: border-box;/* Allow box to grow and shrink, and ensure they are all equally sized */
+                flex: 1 1 auto;
+            }
        
        
         </style>
@@ -129,12 +133,13 @@
             </div>
             <div class="MapContainer" style="margin-left:10%; width: 80%;">
             
-                <div id="map">
+                <div id="map" class="movablebox">
                     <div class="leaflet-control coordinate"></div>
                 </div>
+                <div class="dividingElement"></div>
                 <div id= "list_container">
                     <input type="text" id="searchInput" placeholder="Search by First or Last name...">
-                    <div id ="maplist">
+                    <div id ="maplist" class="movablebox">
                     </div>
                     <img src="CoILogo.png" class="CoIlogo">
                 </div>
@@ -187,6 +192,43 @@
         <script src="PapaParse.js"></script>
         <!-- Map control script by Ethan-->
         <script>
+            //Doing the movable box stuff
+            var handler = document.querySelector('.dividingElement');
+            var wrapper = handler.closest('.MapContainer');
+            var boxA = wrapper.querySelector('.movablebox');
+            var isHandlerDragging = false;
+
+            document.addEventListener('mousedown', function(e) {
+            // If mousedown event is fired from .handler, toggle flag to true
+                if (e.target === handler) {
+                    isHandlerDragging = true;
+                }
+            });
+
+            document.addEventListener('mousemove', function(e) {
+                // Don't do anything if dragging flag is false
+                if (!isHandlerDragging) {
+                    return false;
+                }
+
+                // Get offset
+                var containerOffsetLeft = wrapper.offsetLeft;
+
+                // Get x-coordinate of pointer relative to container
+                var pointerRelativeXpos = e.clientX - containerOffsetLeft;
+                
+                // Arbitrary minimum width set on box A, otherwise its inner content will collapse to width of 0
+                var boxAminWidth = 60;
+
+                // Resize box A
+                // * 8px is the left/right spacing between .handler and its inner pseudo-element
+                // * Set flex-grow to 0 to prevent it from growing
+                boxA.style.width = (Math.max(boxAminWidth, pointerRelativeXpos - 8)) + 'px';
+                boxA.style.flexGrow = 0;
+            });
+
+
+
             //create the map and its coordinates
             var map = L.map('map').setView([42.982521, -117.054526], 18);
             //map.setMaxBounds(map.getBounds());//this makes the total map bounds just what the initial image was, easy solution and I am lazy.
