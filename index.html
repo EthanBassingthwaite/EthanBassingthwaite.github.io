@@ -288,7 +288,7 @@
                     const li = document.createElement('li');
                     li.innerHTML = searchlist[i];
                     li.classList.add("listclassformat");
-                    li.style.backgroundImage =  'url("images/' + data[i]['Marker Photo'] + '")'; 
+                    li.style.backgroundImage =  'url("lowqualityimages/' + data[i]['Marker Photo'] + '")'; 
                     li.style.backgroundSize = "120px";
                     li.addEventListener('click', function() {
                         map.setView(coorlist[i], 20);
