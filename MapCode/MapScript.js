@@ -84,7 +84,7 @@
                 }
                 
                 //assigning the values to the markers
-                for (let i = 0; i < coorlist.length; i++) {
+                for (let i = 0; i < coorlist.length-1; i++) {
                     console.log(coorlist[i]);
                     markerlist.push(L.marker(coorlist[i], {icon: myIcon, draggable: false}));
                     markerlist[i].bindPopup(textlist[i], {maxWidth : 600}).openPopup().addTo(markersLayer);
@@ -98,7 +98,7 @@
                 });*/
         
                 //Making the list
-                for (let i = 0; i < searchlist.length; i++) {
+                for (let i = 0; i < searchlist.length-1; i++) {
                     const li = document.createElement('li');
                     li.innerHTML = searchlist[i];
                     li.classList.add("listclassformat");
