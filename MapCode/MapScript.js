@@ -38,7 +38,7 @@
                 boxA.style.flexGrow = 0;
             });
 
-
+g
 
             //create the map and its coordinates
             var map = L.map('map').setView([42.982521, -117.054526], 18);
@@ -114,7 +114,7 @@
         
             document.addEventListener('DOMContentLoaded', function () {
                 
-                fetch('CemeteryList.csv')//Getting cav values
+                fetch('./MapCode/CemeteryList.csv')//Getting csv values
                     .then(response => response.text())
                     .then(contents => {
                         //Parse it into an array
