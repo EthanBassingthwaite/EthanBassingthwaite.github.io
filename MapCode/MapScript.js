@@ -123,21 +123,24 @@
                         console.log(csvLines)
                         markersLayer = new L.LayerGroup().addTo(map);
                         addMarkers(csvLines);
+
+                        document.getElementById('searchInput').addEventListener('input', function () {
+                            var searchTerm = this.value.toLowerCase();
+                            markersLayer.clearLayers(); // Clear existing markers
+                            listItems.innerHTML = ''; //Clear out the search bar
+                            var filteredMarkers = csvLines.filter(function (data) {
+                                return data['First Name'].toLowerCase().includes(searchTerm) ||
+                                       data['Last Name' ].toLowerCase().includes(searchTerm);
+                            });
+                
+                            addMarkers(filteredMarkers);
+                        });
+                        
                     })
                     .catch(error => console.error('Error fetching the file:', error));
             
                 
-                document.getElementById('searchInput').addEventListener('input', function () {
-                    var searchTerm = this.value.toLowerCase();
-                    markersLayer.clearLayers(); // Clear existing markers
-                    listItems.innerHTML = ''; //Clear out the search bar
-                    var filteredMarkers = csvLines.filter(function (data) {
-                        return data['First Name'].toLowerCase().includes(searchTerm) ||
-                               data['Last Name' ].toLowerCase().includes(searchTerm);
-                    });
-        
-                    addMarkers(filteredMarkers);
-                });
+                
         
                 
         
