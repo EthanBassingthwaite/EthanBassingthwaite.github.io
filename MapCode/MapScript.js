@@ -101,7 +101,7 @@
                     const li = document.createElement('li');
                     li.innerHTML = searchlist[i];
                     li.classList.add("listclassformat");
-                    li.style.backgroundImage =  'url("../lowqualityimages/' + data[i]['Marker Photo'].slice(0, -3) + 'jpg")'; 
+                    li.style.backgroundImage =  'url("./lowqualityimages/' + data[i]['Marker Photo'].slice(0, -3) + 'jpg")'; 
                     li.style.backgroundSize = "120px";
                     li.addEventListener('click', function() {
                         map.setView(coorlist[i], 20);
