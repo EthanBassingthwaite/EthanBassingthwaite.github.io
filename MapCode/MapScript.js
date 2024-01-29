@@ -114,7 +114,7 @@
         
             document.addEventListener('DOMContentLoaded', function () {
                 
-                fetch('./CemeteryList.csv')//Getting cav values
+                fetch('../MapCode/CemeteryList.csv')//Getting cav values
                     .then(response => response.text())
                     .then(contents => {
                         //Parse it into an array
