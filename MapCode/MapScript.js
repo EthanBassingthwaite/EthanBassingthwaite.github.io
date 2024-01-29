@@ -120,6 +120,7 @@
                         csvLines = Papa.parse(contents, {
                                 header: true
                         }).data;
+                        console.log(csvLines)
                         markersLayer = new L.LayerGroup().addTo(map);
                         addMarkers(csvLines);
                     })
@@ -151,7 +152,6 @@
             //google satellite
             googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
                 maxZoom: 22, 
-                //minZoom: 17, //Commented out for bugfixing
                 subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
             });
             googleSat.addTo(map);
