@@ -52,7 +52,7 @@
             //The place where I construct and add the map and list markers/list elements
             function addMarkers(data) {
                 var myIcon = L.icon({
-                    iconUrl: 'icon.png',
+                    iconUrl: './MapCode/icon.png',
                     iconSize: [10, 10],
                 });
         
