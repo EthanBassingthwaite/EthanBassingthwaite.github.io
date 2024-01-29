@@ -75,6 +75,7 @@
                     }
                     popuptext += `${data[i]['Date of Birth']} &ndash; ${data[i]['Date of Death']}`;
                     textlist.push(popuptext);
+                    console.log([data[i]['GPS 1'], data[i]['GPS 2']]);
                     coorlist.push([data[i]['GPS 1'], data[i]['GPS 2']]);
         
                     searchtext = `${data[i]['Last Name']}, ${data[i]['First Name']} 
@@ -135,7 +136,7 @@
                 
                             addMarkers(filteredMarkers);
                         });
-                        
+
                     })
                     .catch(error => console.error('Error fetching the file:', error));
             
