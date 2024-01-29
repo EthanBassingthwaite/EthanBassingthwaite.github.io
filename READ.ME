@@ -74,4 +74,14 @@ Meanwhile this code replaces the last 3 letters with jpg
 
 li.style.backgroundImage =  'url("../lowqualityimages/' + data[i]['Marker Photo'].slice(0, -3) + 'jpg")'; 
 
-Modify these sections of the code if 
+Modify these sections of the code if you are encountering this mismatch, or modify the latter example to:
+
+li.style.backgroundImage =  'url("../lowqualityimages/' + data[i]['Marker Photo'])';
+
+If your csv file urls match everything for the low quality images
+
+
+
+
+
+Finally, if you have any questions, feel free to message me at ethan.bassingthwaite@yotes.collegeofidaho.edu
