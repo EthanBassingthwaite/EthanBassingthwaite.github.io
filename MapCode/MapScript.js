@@ -104,6 +104,8 @@
                     li.style.backgroundImage =  'url("./lowqualityimages/' + data[i]['Marker Photo'].slice(0, -3) + 'jpg")'; 
                     li.style.backgroundSize = "120px";
                     li.addEventListener('click', function() {
+                        console.log("what the list is getting");
+                        console.log(coorlist[i]);
                         map.setView(coorlist[i], 20);
                         markerlist[i].openPopup();
                     });
