@@ -75,7 +75,6 @@
                     }
                     popuptext += `${data[i]['Date of Birth']} &ndash; ${data[i]['Date of Death']}`;
                     textlist.push(popuptext);
-                    console.log([data[i]['GPS 1'], data[i]['GPS 2']]);
                     coorlist.push([data[i]['GPS 1'], data[i]['GPS 2']]);
         
                     searchtext = `${data[i]['Last Name']}, ${data[i]['First Name']} 
@@ -85,7 +84,6 @@
                 
                 //assigning the values to the markers
                 for (let i = 0; i < coorlist.length-1; i++) {
-                    console.log(coorlist[i]);
                     markerlist.push(L.marker(coorlist[i], {icon: myIcon, draggable: false}));
                     markerlist[i].bindPopup(textlist[i], {maxWidth : 600}).openPopup().addTo(markersLayer);
                 }
@@ -105,8 +103,6 @@
                     li.style.backgroundImage =  'url("./lowqualityimages/' + data[i]['Marker Photo'].slice(0, -3) + 'jpg")'; 
                     li.style.backgroundSize = "120px";
                     li.addEventListener('click', function() {
-                        console.log("what the list is getting");
-                        console.log(coorlist[i]);
                         map.setView(coorlist[i], 20);
                         markerlist[i].openPopup();
                     });
@@ -124,7 +120,6 @@
                         csvLines = Papa.parse(contents, {
                                 header: true
                         }).data;
-                        console.log(csvLines)
                         markersLayer = new L.LayerGroup().addTo(map);
                         addMarkers(csvLines);
 
