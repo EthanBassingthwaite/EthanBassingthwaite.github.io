@@ -1,8 +1,4 @@
-<!-- leaflet js  -->
-<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-  <script src="PapaParse.js"></script>
-        <!-- Map control script by Ethan-->
-        <script>
+
             //Doing the movable box stuff
             var handler = document.querySelector('.dividingElement');
             var wrapper = handler.closest('.MapContainer');
@@ -68,10 +64,10 @@
         
                 //Creating the strings for the markers and lists
                 for (let i = 0; i < data.length; i++) {
-                    filepath = `images/${data[i]['Marker Photo']}`;
+                    filepath = `../images/${data[i]['Marker Photo']}`;
                     popuptext = `<img src="${filepath}" alt="Image" class="popup_image">`;
                     if (data[i]['Marker Photo_Military'] !== '') {
-                        militaryFilepath = `images/${data[i]['Marker Photo_Military']}`;
+                        militaryFilepath = `../images/${data[i]['Marker Photo_Military']}`;
                         popuptext += `<img src="${militaryFilepath}" alt="Image" class="popup_image">`;
                     }
                     popuptext += `<br>${data[i]['Last Name']}, ${data[i]['First Name']}<br>`;
@@ -105,7 +101,7 @@
                     const li = document.createElement('li');
                     li.innerHTML = searchlist[i];
                     li.classList.add("listclassformat");
-                    li.style.backgroundImage =  'url("lowqualityimages/' + data[i]['Marker Photo'].slice(0, -3) + 'jpg")'; 
+                    li.style.backgroundImage =  'url("../lowqualityimages/' + data[i]['Marker Photo'].slice(0, -3) + 'jpg")'; 
                     li.style.backgroundSize = "120px";
                     li.addEventListener('click', function() {
                         map.setView(coorlist[i], 20);
@@ -162,4 +158,3 @@
             googleSat.addTo(map);
 
 
-        </script>
