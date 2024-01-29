@@ -140,8 +140,7 @@
                             addMarkers(filteredMarkers);
                         });
 
-                    })
-                    .catch(error => console.error('Error fetching the file:', error));
+                    });
             
                 
                 
