@@ -1,245 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mapv1</title>
-
-    <!-- leaflet css  -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
- 
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-        }
-
-        #map {
-            position: absolute;
-            height: inherit; 
-            width: 70%;
-        }
-
-        .coordinate {
-            position: relative;
-            bottom: 10px;
-            right: 50%;
-        }
-
-        .leaflet-popup-content-wrapper {
-            background-color: #f6fad1;
-            color: #000000;
-            border: 1px solid rgb(252, 255, 74);
-            border-radius: 5px;
-        }
-
-        #maplist {
-            overflow-y: auto; 
-            width: 100%;
-            height: 100%;  
-            list-style: none; 
-        }
-
-        .container {
-            position: relative;
-            height: 100vh;
-            width: 1200px;
-            display: flex;
-        }
-
-        #list_container {
-            position: absolute;
-            margin-left: 70%;
-            height: 100%;
-            width: 30%;  
-        }
-
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="Ethan Bassingthwaite" />
+        <title>Jordan Valley Oregon Cemetery Project</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+        <!-- leaflet css  -->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+        <!-- Styles for the map section-->
+        <link href="MapCode/Map.css" rel="stylesheet"/>
         
-
-        #searchInput {
-            width: 96%; 
-        }
-
-        .list_text {
-            display: inline-block;
-            white-space: nowrap;
-            overflow:hidden;
-        }
-
-        .list_image {
-            height: 84px;
-            display: inline-block;
-            vertical-align: top;
-        }
-        .popup_image {
-            height: 100px;
-            display: inline-block;
-            vertical-align: top;
-        }
-        .listclassformat {
-            list-style: none;
-            padding: 10px 30px 30px 10px;
-            background-repeat: no-repeat;
-            background-position: left center;
-        }
-       
-    </style>
-</head>
-
-<body>
-    <div class="container">
         
-        <div id="map">
-            <div class="leaflet-control coordinate"></div>
-        </div>
-        <div id= "list_container">
-            <input type="text" id="searchInput" placeholder="Search by First or Last name...">
-            <div id ="maplist">
+    </head>
+    <body>
+        <!-- Header - set the background image for the header in the line below-->
+        <header class="py-4 bg-image-full" style="background-image: url('images/CemBackground.JPG')">
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> <!--This is just so the image is big on the website, no idea how to properly do this yet-->
+        </header>
+            <div class="container my-4">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6">
+                        <h2>Jordan Valley Cemetery, Oregon</h2>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-</body>
+        <!-- Content section-->
+        <section class="py-5">
+            <div class="container my-5">
+                <div class="row justify-content-center">
+                    
+                    <div class="col-lg-6">
+                        <h2>Overview of Project </h2>
+                        <p class="mb-0">This work was done in collaboration with the Basque Museum & Cultural Center in Boise, Idaho. This project seeks to offer a visual and interactive representation of the cemetery in Jordan Valley, Oregon.  
+                            <br>Researchers, such as Dr. Bonmatí (CofI), Patty Miller and Megan Overgaard, collected data from the cemetery that made this project possible. Thanks to their diligence, we knew the names, dates, and geolocation of each grave, which was used to create a map of the cemetery, seen below.  
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="MapContainer" style="margin-left:10%; width: 80%;">
+                <div class="movablebox" id="map">
+                    <div class="leaflet-control coordinate"></div>
+                </div>
+                <div class="dividingElement"></div>
+                <div class="movablebox">
+                    <input type="text" id="searchInput" placeholder="Search by First or Last name...">
+                    <div id ="maplist">
+                    </div>
+                    <img src="MapCode/CoILogo.png" class="CoIlogo">
+                </div>
+            </div>
+        </section>
+        <!-- Content section-->
+        <section class="py-5">
+            <div class="container my-5">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6">
+                        <h2>Future Applications </h2>
+                        <p class="mb-0">
+                            This map was designed to be flexible. One can easily insert it into practically any website with ease akin to a simple image. In addition, it draws all its data from a csv file, which means one can make minor modifications, swap out the data, and have a map for another cemetery. The Basque Museum and Cultural Center hopes to use and expand this code to map out other cemeteries. For instance, it would take only the following steps: 
+                                <ol>
+                                    <li>Upload a new CSV file following the same naming conventions </li>
+                                    <li>Insert the div element “MapContainer” and its contents where you want the map to go (along with copying over the relevant files and dependencies) </li>
+                                    <li>Modify a few aspects of the code, such as starting position of the map or size of the MapContainer </li>
+                                </ol>
+                            The code can be accessed <a href="https://github.com/EthanBassingthwaite/EthanBassingthwaite.github.io">here</a>
+                        </p>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+        <section class="py-5">
+            <div class="container my-5">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6">
+                        <h2>Student Bio: Ethan Bassingthwaite</h2>
+                        <p class="mb-0">
+                            I am the creator of this map and a senior at the College of Idaho, majoring in Math-Physics and Computer Science, minoring in Political Economy and Spanish. This project was an internship done in conjunction with the College of Idaho Spanish Department and the Basque Museum and Cultural Center. While making this site, I gained experience in organizing my workflow through GitHub, managing various branches of code, and making efficient modifications. I learned how to access documents through JavaScript on the webpage, letting it access the data for the cemetery. I can now navigate the organizational structure of Html, able to understand how the layout of the webpage comes to be. Finally, I gained experience in formatting the elements on the page through CSS, letting me make the map look decent.  
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Footer-->
+        <footer class="py-5 bg-dark">
+            <div class="container"><p class="m-0 text-center text-white"></p></div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
 
+        
+        <!-- leaflet js  and papa parse-->
+        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+        <script src="MapCode/PapaParse.js"></script>
+        <!-- Map control script by Ethan-->
+        <script src="MapCode/MapScript.js"></script>
+            
+    </body>
 </html>
-
-<!-- leaflet js  -->
-<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-<script src="PapaParse.js"></script>
-
-
-<script>
-    //create the map and its coordinates
-    var map = L.map('map').setView([42.982521, -117.054526], 18);
-    map.setMaxBounds(map.getBounds());//this makes the total map bounds just what the initial image was, easy solution and I am lazy.
-    
-    
-
-    let markersLayer = new L.LayerGroup().addTo(map);
-    const listItems = document.getElementById('maplist');
-
-
-    //The place where I construct and add the map and list markers/list elements
-    function addMarkers(data) {
-        var myIcon = L.icon({
-            iconUrl: 'icon.png',
-            iconSize: [10, 10],
-        });
-
-        var textlist = [];
-        var coorlist = [];
-        var markerlist = [];
-        var searchlist = [];
-
-        //Creating the strings for the markers and lists
-        for (let i = 0; i < data.length; i++) {
-            filepath = `images/${data[i]['Marker Photo']}`;
-            popuptext = `<img src="${filepath}" alt="Image" class="popup_image">`;
-            if (data[i]['Marker Photo_Military'] !== '') {
-                militaryFilepath = `images/${data[i]['Marker Photo_Military']}`;
-                popuptext += `<img src="${militaryFilepath}" alt="Image" class="popup_image">`;
-            }
-            popuptext += `<br>${data[i]['Last Name']}, ${data[i]['First Name']}<br>`;
-            if (data[i]['Maiden Name'] !== '') {
-                popuptext += `Maiden Name: ${data[i]['Maiden Name']}<br>`;
-            }
-            popuptext += `${data[i]['Date of Birth']} &ndash; ${data[i]['Date of Death']}`;
-            textlist.push(popuptext);
-            coorlist.push([data[i]['GPS 1'], data[i]['GPS 2']]);
-
-            searchtext = `${data[i]['Last Name']}, ${data[i]['First Name']} 
-                            <br> ${data[i]['Date of Birth']} &ndash; ${data[i]['Date of Death']}`
-            searchlist.push(searchtext);
-        }
-        
-        //assigning the values to the markers
-        for (let i = 0; i < coorlist.length; i++) {
-            markerlist.push(L.marker(coorlist[i], {icon: myIcon, draggable: true}));
-            markerlist[i].bindPopup(textlist[i]).openPopup().addTo(markersLayer);
-        }
-
-        //Code to let us align the markers with the actual graves
-        markerlist.forEach(function(marker) {
-            marker.on('dragend', function() {
-                console.log(marker.getLatLng().toString());
-            });
-        });
-
-        //Making the list
-        for (let i = 0; i < searchlist.length; i++) {
-            const li = document.createElement('li');
-            li.innerHTML = searchlist[i];
-            li.classList.add("listclassformat");
-            li.style.backgroundImage =  'url("images/' + data[i]['Marker Photo'] + '")'; 
-            li.style.backgroundSize = "1000%";
-            li.addEventListener('click', function() {
-                map.setView(coorlist[i], 20);
-                markerlist[i].openPopup();
-            });
-            listItems.appendChild(li);
-        }
-
-    }
-
-    document.addEventListener('DOMContentLoaded', function () {
-        
-        fetch('./CemetaryList.csv')//Getting cav values
-            .then(response => response.text())
-            .then(contents => {
-                //Parse it into an array
-                csvLines = Papa.parse(contents, {
-                        header: true
-                }).data;
-                markersLayer = new L.LayerGroup().addTo(map);
-                addMarkers(csvLines);
-            })
-            .catch(error => console.error('Error fetching the file:', error));
-    
-        
-        document.getElementById('searchInput').addEventListener('input', function () {
-            var searchTerm = this.value.toLowerCase();
-            markersLayer.clearLayers(); // Clear existing markers
-            listItems.innerHTML = ''; //Clear out the search bar
-            var filteredMarkers = csvLines.filter(function (data) {
-                return data['First Name'].toLowerCase().includes(searchTerm) ||
-                       data['Last Name' ].toLowerCase().includes(searchTerm);
-            });
-
-            addMarkers(filteredMarkers);
-        });
-
-        
-
-    });
-
-
-
-    
-    
-
-    
-    //google satellite
-    googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
-        maxZoom: 22, 
-        //minZoom: 17, //Commented out for bugfixing
-        subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
-    });
-    googleSat.addTo(map)
-
-    var wms = L.tileLayer.wms("http://localhost:8080/geoserver/wms", {
-        layers: 'geoapp:admin',
-        format: 'image/png',
-        transparent: true,
-        attribution: "wms test",
-        maxNativeZoom:19,
-        maxZoom:22
-    });
-
-
-
-
-
-
-
-   
-</script>
