@@ -45,14 +45,17 @@
             position: relative;
             height: 100vh;
             width: 1200px;
+            display: flex;
         }
 
-        .list_container {
-            position: relative;
+        #list_container {
+            position: absolute;
             margin-left: 70%;
             height: 100%;
-            width: 30%;
+            width: 30%;  
         }
+
+        
 
         #searchInput {
             width: 96%; 
@@ -76,7 +79,7 @@
         }
         .listclassformat {
             list-style: none;
-            padding: 10px 30px;
+            padding: 10px 30px 30px 10px;
             background-repeat: no-repeat;
             background-position: left center;
         }
@@ -90,7 +93,7 @@
         <div id="map">
             <div class="leaflet-control coordinate"></div>
         </div>
-        <div class = "list_container">
+        <div id= "list_container">
             <input type="text" id="searchInput" placeholder="Search by First or Last name...">
             <div id ="maplist">
             </div>
@@ -108,15 +111,15 @@
 <script>
     //create the map and its coordinates
     var map = L.map('map').setView([42.982521, -117.054526], 18);
-    //map.setMaxBounds(map.getBounds());//this makes the total map bounds just what the initial image was, easy solution and I am lazy.
+    map.setMaxBounds(map.getBounds());//this makes the total map bounds just what the initial image was, easy solution and I am lazy.
     
-    ///////////////////////////////////////////
-        //Commented out max bounds for ambrose bugfixing
-    //////////////////
+    
 
     let markersLayer = new L.LayerGroup().addTo(map);
     const listItems = document.getElementById('maplist');
 
+
+    //The place where I construct and add the map and list markers/list elements
     function addMarkers(data) {
         var myIcon = L.icon({
             iconUrl: 'icon.png',
