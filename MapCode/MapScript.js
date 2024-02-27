@@ -122,7 +122,7 @@
                         }).data;
                         markersLayer = new L.LayerGroup().addTo(map);
                         addMarkers(csvLines);
-
+                        data = csvLines;
                         document.getElementById('searchInput').addEventListener('input', function () {
                             var searchTerm = this.value.toLowerCase();
                             markersLayer.clearLayers(); // Clear existing markers
