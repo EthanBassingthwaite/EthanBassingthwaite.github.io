@@ -1,8 +1,4 @@
-<!-- leaflet js  -->
-<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-  <script src="PapaParse.js"></script>
-        <!-- Map control script by Ethan-->
-        <script>
+
             //Doing the movable box stuff
             var handler = document.querySelector('.dividingElement');
             var wrapper = handler.closest('.MapContainer');
@@ -43,7 +39,6 @@
             });
 
 
-
             //create the map and its coordinates
             var map = L.map('map').setView([42.982521, -117.054526], 18);
             //map.setMaxBounds(map.getBounds());//this makes the total map bounds just what the initial image was, easy solution and I am lazy.
@@ -57,7 +52,7 @@
             //The place where I construct and add the map and list markers/list elements
             function addMarkers(data) {
                 var myIcon = L.icon({
-                    iconUrl: 'icon.png',
+                    iconUrl: './MapCode/icon.png',
                     iconSize: [10, 10],
                 });
         
@@ -68,10 +63,10 @@
         
                 //Creating the strings for the markers and lists
                 for (let i = 0; i < data.length; i++) {
-                    filepath = `images/${data[i]['Marker Photo']}`;
+                    filepath = `./images/${data[i]['Marker Photo']}`;
                     popuptext = `<img src="${filepath}" alt="Image" class="popup_image">`;
                     if (data[i]['Marker Photo_Military'] !== '') {
-                        militaryFilepath = `images/${data[i]['Marker Photo_Military']}`;
+                        militaryFilepath = `./images/${data[i]['Marker Photo_Military']}`;
                         popuptext += `<img src="${militaryFilepath}" alt="Image" class="popup_image">`;
                     }
                     popuptext += `<br>${data[i]['Last Name']}, ${data[i]['First Name']}<br>`;
@@ -88,7 +83,7 @@
                 }
                 
                 //assigning the values to the markers
-                for (let i = 0; i < coorlist.length; i++) {
+                for (let i = 0; i < coorlist.length-1; i++) {
                     markerlist.push(L.marker(coorlist[i], {icon: myIcon, draggable: false}));
                     markerlist[i].bindPopup(textlist[i], {maxWidth : 600}).openPopup().addTo(markersLayer);
                 }
@@ -101,11 +96,11 @@
                 });*/
         
                 //Making the list
-                for (let i = 0; i < searchlist.length; i++) {
+                for (let i = 0; i < searchlist.length-1; i++) {
                     const li = document.createElement('li');
                     li.innerHTML = searchlist[i];
                     li.classList.add("listclassformat");
-                    li.style.backgroundImage =  'url("lowqualityimages/' + data[i]['Marker Photo'].slice(0, -3) + 'jpg")'; 
+                    li.style.backgroundImage =  'url("./lowqualityimages/' + data[i]['Marker Photo'].slice(0, -3) + 'jpg")'; 
                     li.style.backgroundSize = "120px";
                     li.addEventListener('click', function() {
                         map.setView(coorlist[i], 20);
@@ -118,7 +113,7 @@
         
             document.addEventListener('DOMContentLoaded', function () {
                 
-                fetch('./CemeteryList.csv')//Getting cav values
+                fetch('./MapCode/CemeteryList.csv')//Getting csv values
                     .then(response => response.text())
                     .then(contents => {
                         //Parse it into an array
@@ -127,21 +122,25 @@
                         }).data;
                         markersLayer = new L.LayerGroup().addTo(map);
                         addMarkers(csvLines);
-                    })
-                    .catch(error => console.error('Error fetching the file:', error));
+                        document.getElementById('searchInput').addEventListener('input', function () {
+                            var searchTerm = this.value.toLowerCase();
+                            markersLayer.clearLayers(); // Clear existing markers
+                            listItems.innerHTML = ''; //Clear out the search bar
+                            data = csvLines;
+                            var filteredMarkers = csvLines.filter(function (data) {
+                                var firstName = (data['First Name'] || '').toLowerCase();
+                                var lastName = (data['Last Name'] || '').toLowerCase();
+                        
+                                return firstName.includes(searchTerm) || lastName.includes(searchTerm);
+                            });
+                
+                            addMarkers(filteredMarkers);
+                        });
+
+                    });
             
                 
-                document.getElementById('searchInput').addEventListener('input', function () {
-                    var searchTerm = this.value.toLowerCase();
-                    markersLayer.clearLayers(); // Clear existing markers
-                    listItems.innerHTML = ''; //Clear out the search bar
-                    var filteredMarkers = csvLines.filter(function (data) {
-                        return data['First Name'].toLowerCase().includes(searchTerm) ||
-                               data['Last Name' ].toLowerCase().includes(searchTerm);
-                    });
-        
-                    addMarkers(filteredMarkers);
-                });
+                
         
                 
         
@@ -156,10 +155,8 @@
             //google satellite
             googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
                 maxZoom: 22, 
-                //minZoom: 17, //Commented out for bugfixing
                 subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
             });
             googleSat.addTo(map);
 
 
-        </script>
