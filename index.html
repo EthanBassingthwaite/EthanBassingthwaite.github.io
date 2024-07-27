@@ -1,107 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="Ethan Bassingthwaite" />
-        <title>Jordan Valley Oregon Cemetery Project</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
-        <!-- leaflet css  -->
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-        <!-- Styles for the map section-->
-        <link href="MapCode/Map.css" rel="stylesheet"/>
-        
-        
-    </head>
-    <body>
-        <!-- Header - set the background image for the header in the line below-->
-        <header class="py-4 bg-image-full" style="background-image: url('images/CemBackground.JPG')">
-            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> <!--This is just so the image is big on the website, no idea how to properly do this yet-->
-        </header>
-            <div class="container my-4">
-                <div class="row justify-content-center">
-                    <div class="col-lg-6">
-                        <h2>Jordan Valley Cemetery, Oregon</h2>
-                    </div>
-                </div>
-            </div>
-        <!-- Content section-->
-        <section class="py-5">
-            <div class="container my-5">
-                <div class="row justify-content-center">
-                    
-                    <div class="col-lg-6">
-                        <h2>Overview of Project </h2>
-                        <p class="mb-0">This work was done in collaboration with the Basque Museum & Cultural Center in Boise, Idaho. This project seeks to offer a visual and interactive representation of the cemetery in Jordan Valley, Oregon.  
-                            <br>Researchers, such as Dr. Bonmatí (CofI), Patty Miller and Megan Overgaard, collected data from the cemetery that made this project possible. Thanks to their diligence, we knew the names, dates, and geolocation of each grave, which was used to create a map of the cemetery, seen below.  
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="MapContainer" style="margin-left:10%; width: 80%;">
-                <div class="movablebox" id="map">
-                    <div class="leaflet-control coordinate"></div>
-                </div>
-                <div class="dividingElement"></div>
-                <div class="movablebox">
-                    <input type="text" id="searchInput" placeholder="Search by First or Last name...">
-                    <div id ="maplist">
-                    </div>
-                    <img src="MapCode/CoILogo.png" class="CoIlogo">
-                </div>
-            </div>
-        </section>
-        <!-- Content section-->
-        <section class="py-5">
-            <div class="container my-5">
-                <div class="row justify-content-center">
-                    <div class="col-lg-6">
-                        <h2>Future Applications </h2>
-                        <p class="mb-0">
-                            This map was designed to be flexible. One can easily insert it into practically any website with ease akin to a simple image. In addition, it draws all its data from a csv file, which means one can make minor modifications, swap out the data, and have a map for another cemetery. The Basque Museum and Cultural Center hopes to use and expand this code to map out other cemeteries. For instance, it would take only the following steps: 
-                                <ol>
-                                    <li>Upload a new CSV file following the same naming conventions </li>
-                                    <li>Insert the div element “MapContainer” and its contents where you want the map to go (along with copying over the relevant files and dependencies) </li>
-                                    <li>Modify a few aspects of the code, such as starting position of the map or size of the MapContainer </li>
-                                </ol>
-                            The code can be accessed <a href="https://github.com/EthanBassingthwaite/EthanBassingthwaite.github.io">here</a>
-                        </p>
-                    </div>
-                    
-                </div>
-            </div>
-        </section>
-        <section class="py-5">
-            <div class="container my-5">
-                <div class="row justify-content-center">
-                    <div class="col-lg-6">
-                        <h2>Student Bio: Ethan Bassingthwaite</h2>
-                        <p class="mb-0">
-                            I am the creator of this map and a senior at the College of Idaho, majoring in Math-Physics and Computer Science, minoring in Political Economy and Spanish. This project was an internship done in conjunction with the College of Idaho Spanish Department and the Basque Museum and Cultural Center. While making this site, I gained experience in organizing my workflow through GitHub, managing various branches of code, and making efficient modifications. I learned how to access documents through JavaScript on the webpage, letting it access the data for the cemetery. I can now navigate the organizational structure of Html, able to understand how the layout of the webpage comes to be. Finally, I gained experience in formatting the elements on the page through CSS, letting me make the map look decent.  
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Footer-->
-        <footer class="py-5 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white"></p></div>
-        </footer>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
-
-        
-        <!-- leaflet js  and papa parse-->
-        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-        <script src="MapCode/PapaParse.js"></script>
-        <!-- Map control script by Ethan-->
-        <script src="MapCode/MapScript.js"></script>
-            
-    </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>My Website</title>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Me</a></li>
+      <li><a href="map.html">Map</a></li>
+      <li><a href="project.html">Project</a></li>
+    </ul>
+  </nav>
+  <!-- Page content goes here -->
+</body>
 </html>
