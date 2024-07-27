@@ -14,8 +14,17 @@
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
         <!-- Styles for the map section-->
         <link href="MapCode/Map.css" rel="stylesheet"/>
-        
-        
+        <link rel="stylesheet" href="styles.css"> <!-- Link to the CSS file -->
+              <script>
+                function includeHeader() {
+                  fetch('header.html')
+                    .then(response => response.text())
+                    .then(data => {
+                      document.getElementById('header').innerHTML = data;
+                    });
+                }
+              </script>
+
     </head>
     <body>
         <!-- Header - set the background image for the header in the line below-->
