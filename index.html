@@ -4,76 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Website</title>
-  <style>
-    /* Basic styles for the header and button */
-    header {
-      background-color: #333;
-      color: white;
-      padding: 10px;
-      text-align: left;
+  <link rel="stylesheet" href="styles.css"> <!-- Link to the CSS file -->
+  <script>
+    function includeHeader() {
+      fetch('header.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('header').innerHTML = data;
+        });
     }
-
-    .menu-button {
-      background-color: #444;
-      border: none;
-      color: white;
-      padding: 10px 20px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 16px;
-      margin: 4px 2px;
-      cursor: pointer;
-      border-radius: 4px;
-    }
-
-    /* Dropdown menu styles */
-    .dropdown {
-      position: relative;
-      display: inline-block;
-    }
-
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      background-color: #f9f9f9;
-      min-width: 160px;
-      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-      z-index: 1;
-    }
-
-    .dropdown-content a {
-      color: black;
-      padding: 12px 16px;
-      text-decoration: none;
-      display: block;
-    }
-
-    .dropdown-content a:hover {
-      background-color: #f1f1f1;
-    }
-
-    .dropdown:hover .dropdown-content {
-      display: block;
-    }
-  </style>
+  </script>
 </head>
-<body>
-
-<header>
-  <div class="dropdown">
-    <button class="menu-button">Menu</button>
-    <div class="dropdown-content">
-      <a href="index.html">Home</a>
-      <a href="map.html">Map</a>
-      <a href="astronomy.html">Project</a>
-    </div>
-  </div>
-</header>
-
-<main>
-  <!-- Main content of your page goes here -->
-</main>
-
+<body onload="includeHeader()">
+  <div id="header"></div>
+  <main>
+    <!-- Main content of your page goes here -->
+  </main>
 </body>
 </html>
