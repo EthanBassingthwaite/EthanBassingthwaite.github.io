@@ -122,14 +122,16 @@
                         }).data;
                         markersLayer = new L.LayerGroup().addTo(map);
                         addMarkers(csvLines);
-
                         document.getElementById('searchInput').addEventListener('input', function () {
                             var searchTerm = this.value.toLowerCase();
                             markersLayer.clearLayers(); // Clear existing markers
                             listItems.innerHTML = ''; //Clear out the search bar
+                            data = csvLines;
                             var filteredMarkers = csvLines.filter(function (data) {
-                                return data['First Name'].toLowerCase().includes(searchTerm) ||
-                                       data['Last Name' ].toLowerCase().includes(searchTerm);
+                                var firstName = (data['First Name'] || '').toLowerCase();
+                                var lastName = (data['Last Name'] || '').toLowerCase();
+                        
+                                return firstName.includes(searchTerm) || lastName.includes(searchTerm);
                             });
                 
                             addMarkers(filteredMarkers);
