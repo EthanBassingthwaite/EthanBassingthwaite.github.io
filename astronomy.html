@@ -1,1 +1,24 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Website</title>
+  <link rel="stylesheet" href="styles.css"> <!-- Link to the CSS file -->
+  <script>
+    function includeHeader() {
+      fetch('header.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('header').innerHTML = data;
+        });
+    }
+  </script>
+</head>
+<body onload="includeHeader()">
+  <div id="header"></div>
+  <main>
+    <!-- Main content of your page goes here -->
+  </main>
+</body>
+</html>
