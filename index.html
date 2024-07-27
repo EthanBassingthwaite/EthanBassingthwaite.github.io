@@ -3,16 +3,78 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
   <title>My Website</title>
+  <style>
+    /* Basic styles for the header and button */
+    header {
+      background-color: #333;
+      color: white;
+      padding: 10px;
+      text-align: left;
+    }
+
+    .menu-button {
+      background-color: #444;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    /* Dropdown menu styles */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+  </style>
 </head>
 <body>
-  <nav>
-    <ul>
-      <li><a href="map.html">Map</a></li>
-      <li><a href="astronomy.html">Project</a></li>
-    </ul>
-  </nav>
-  <!-- Page content goes here -->
+
+<header>
+  <div class="dropdown">
+    <button class="menu-button">Menu</button>
+    <div class="dropdown-content">
+      <a href="index.html">Home</a>
+      <a href="about.html">About Me</a>
+      <a href="map.html">Map</a>
+      <a href="project.html">Project</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- Main content of your page goes here -->
+</main>
+
 </body>
 </html>
