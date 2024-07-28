@@ -2,7 +2,7 @@
  let astronomyData = [];
 
     function loadCSV() {
-      Papa.parse('path/to/astronomy.csv', {
+      Papa.parse('AstronomyCode/AstroData.csv', {
         download: true,
         header: true,
         complete: function(results) {
