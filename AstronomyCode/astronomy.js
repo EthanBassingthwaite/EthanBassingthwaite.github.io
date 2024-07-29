@@ -15,7 +15,6 @@
           document.getElementById('bmax').addEventListener('input', searchData);
           document.getElementById('bmin').addEventListener('input', searchData);
           
-          
           // Initial display of all data or filtered data if needed
           displayResults(data);
         });
