@@ -36,7 +36,7 @@
         return (
           (isNaN(b) || b <= MaxB && b >= MinB) &&
           (isNaN(l) || l <= MaxL && L >= MinL) &&
-          (isNaN(YBnum) || YBnum <= MaxYB && YBnum >= MinYB) 
+          (isNaN(YBnum) || YBnum <= MaxYB && YBnum >= MinYB)  
         );
       });
 
