@@ -34,9 +34,12 @@
         const b = parseFloat(item['b']);
 
         return (
-          (isNaN(b) || b <= MaxB && b >= MinB) &&
-          (isNaN(l) || l <= MaxL && L >= MinL) &&
-          (isNaN(YBnum) || YBnum <= MaxYB && YBnum >= MinYB)  
+            (isNaN(MaxB) || b <= MaxB) &&
+            (isNaN(MinB) || b >= MinB) &&
+            (isNaN(MaxL) || l <= MaxL) &&
+            (isNaN(MinL) || l >= MinL) &&
+            (isNaN(MaxYB) || YBnum <= MaxYB) &&
+            (isNaN(MinYB) || YBnum >= MinYB)
         );
       });
 
