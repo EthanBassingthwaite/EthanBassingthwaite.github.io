@@ -21,12 +21,12 @@
     });
 
     function searchData() {
-      const MaxYB = parseFloat(document.getElementById('YBmax'));
-      const MinYB = parseFloat(document.getElementById('YBmin'));
-      const MaxL = parseFloat(document.getElementById('lmax'));
-      const MinL = parseFloat(document.getElementById('lmin'));
-      const MaxB = parseFloat(document.getElementById('bmax'));
-      const MinB = parseFloat(document.getElementById('bmin'));
+        const MaxYB = parseFloat(document.getElementById('YBmax').value);
+        const MinYB = parseFloat(document.getElementById('YBmin').value);
+        const MaxL = parseFloat(document.getElementById('lmax').value);
+        const MinL = parseFloat(document.getElementById('lmin').value);
+        const MaxB = parseFloat(document.getElementById('bmax').value);
+        const MinB = parseFloat(document.getElementById('bmin').value);
       
       const filteredData = data.filter(item => {
         const YBnum = parseInt(item['YB']);
