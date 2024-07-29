@@ -1,38 +1,37 @@
-//Nothing Yet
- let astronomyData = [];
+const data = [
+  { name: "Alpha Centauri", type: "Star", distance: 4.37 },
+  { name: "Betelgeuse", type: "Star", distance: 642.5 },
+  { name: "Sirius", type: "Star", distance: 8.6 },
+  // More data entries...
+];
 
-    function loadCSV() {
-      Papa.parse('AstronomyCode/AstroData.csv', {
-        download: true,
-        header: true,
-        complete: function(results) {
-          astronomyData = results.data;
-          displayData(astronomyData);
-        }
-      });
-    }
+function searchData() {
+  const nameValue = document.getElementById('nameInput').value.toLowerCase();
+  const typeValue = document.getElementById('typeInput').value.toLowerCase();
+  const distanceValue = parseFloat(document.getElementById('distanceInput').value);
 
-    function displayData(data) {
-      const tbody = document.getElementById('resultsTable').querySelector('tbody');
-      tbody.innerHTML = '';
+  const filteredData = data.filter(item => {
+    return (
+      (nameValue === '' || item.name.toLowerCase().includes(nameValue)) &&
+      (typeValue === '' || item.type.toLowerCase().includes(typeValue)) &&
+      (isNaN(distanceValue) || item.distance <= distanceValue)
+    );
+  });
 
-      data.forEach(item => {
-        const row = document.createElement('tr');
-        Object.values(item).forEach(val => {
-          const cell = document.createElement('td');
-          cell.textContent = val;
-          row.appendChild(cell);
-        });
-        tbody.appendChild(row);
-      });
-    }
+  displayResults(filteredData);
+}
 
-    function searchData() {
-      const query = document.getElementById('searchInput').value.toLowerCase();
-      const filteredData = astronomyData.filter(item => {
-        return Object.values(item).some(val => val.toLowerCase().includes(query));
-      });
-      displayData(filteredData);
-    }
+function displayResults(filteredData) {
+  const tbody = document.querySelector('#resultsTable tbody');
+  tbody.innerHTML = '';
 
-    window.onload = loadCSV;
+  filteredData.forEach(item => {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td>${item.name}</td>
+      <td>${item.type}</td>
+      <td>${item.distance}</td>
+    `;
+    tbody.appendChild(row);
+  });
+}
