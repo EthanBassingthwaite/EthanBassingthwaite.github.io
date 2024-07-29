@@ -30,7 +30,7 @@
       
       const filteredData = data.filter(item => {
         const YBnum = parseInt(item['YB']);
-        const l = parseFload(item['l']);
+        const l = parseFloat(item['l']);
         const b = parseFloat(item['b']);
 
         return (
