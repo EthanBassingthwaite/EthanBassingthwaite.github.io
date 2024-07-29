@@ -16,21 +16,32 @@
   </script>
 </head>
 <body onload="includeHeader()">
+<div id="header"></div>
   <div>
     Wow, look at this cool text about YBs.
     
   </div>
-  <div id="header"></div>
+  
   <main>
-      <h1>Astronomy Data Search</h1>
-  <input type="text" id="searchInput" placeholder="Search..." oninput="searchData()" />
+  <h1>Astronomy Data Search</h1>
+  <div>
+    <label for="nameInput">Name:</label>
+    <input type="text" id="nameInput" placeholder="Enter name..." oninput="searchData()" />
+  </div>
+  <div>
+    <label for="typeInput">Type:</label>
+    <input type="text" id="typeInput" placeholder="Enter type..." oninput="searchData()" />
+  </div>
+  <div>
+    <label for="distanceInput">Distance:</label>
+    <input type="number" id="distanceInput" placeholder="Enter max distance..." oninput="searchData()" />
+  </div>
   <table id="resultsTable">
     <thead>
       <tr>
         <th>Name</th>
         <th>Type</th>
         <th>Distance</th>
-        <!-- Add more columns as needed -->
       </tr>
     </thead>
     <tbody></tbody>
@@ -38,7 +49,4 @@
 
   <script src="MapCode/PapaParse.js"></script>
   <script src="AstronomyCode/astronomy.js"></script>
-  
-  </main>
-</body>
-
+</main>
