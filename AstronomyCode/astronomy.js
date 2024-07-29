@@ -1,37 +1,60 @@
-const data = [
-  { name: "Alpha Centauri", type: "Star", distance: 4.37 },
-  { name: "Betelgeuse", type: "Star", distance: 642.5 },
-  { name: "Sirius", type: "Star", distance: 8.6 },
-  // More data entries...
-];
+    let data = [];
 
-function searchData() {
-  const nameValue = document.getElementById('nameInput').value.toLowerCase();
-  const typeValue = document.getElementById('typeInput').value.toLowerCase();
-  const distanceValue = parseFloat(document.getElementById('distanceInput').value);
+    document.addEventListener('DOMContentLoaded', function () {
+      fetch('./AstronomyCode/AstroData.csv') // Adjust the path as necessary
+        .then(response => response.text())
+        .then(contents => {
+          data = Papa.parse(contents, {
+            header: true
+          }).data;
+          
+          document.getElementById('YBmax').addEventListener('input', searchData);
+          document.getElementById('YBmin').addEventListener('input', searchData);
+          document.getElementById('lmax').addEventListener('input', searchData);
+          document.getElementById('lmin').addEventListener('input', searchData);
+          document.getElementById('bmax').addEventListener('input', searchData);
+          document.getElementById('bmin').addEventListener('input', searchData);
+          
+          
+          // Initial display of all data or filtered data if needed
+          displayResults(data);
+        });
+    });
 
-  const filteredData = data.filter(item => {
-    return (
-      (nameValue === '' || item.name.toLowerCase().includes(nameValue)) &&
-      (typeValue === '' || item.type.toLowerCase().includes(typeValue)) &&
-      (isNaN(distanceValue) || item.distance <= distanceValue)
-    );
-  });
+    function searchData() {
+      const MaxYB = parseFloat(document.getElementById('YBmax');
+      const MinYB = parseFloat(document.getElementById('YBmin');
+      const MaxL = parseFloat(document.getElementById('lmax');
+      const MinL = parseFloat(document.getElementById('lmin');
+      const MaxB = parseFloat(document.getElementById('bmax');
+      const MinB = parseFloat(document.getElementById('bmin');
+      
+      const filteredData = data.filter(item => {
+        const YBnum = parseInt(item['YB']);
+        const l = parseFload(item['l']);
+        const b = parseFloat(item['b']);
 
-  displayResults(filteredData);
-}
+        return (
+          (isNaN(b) || b <= MaxB && b >= MinB) &&
+          (isNaN(l) || l <= MaxL && L >= MinL) &&
+          (isNaN(YBnum) || YBnum <= MaxYB && YBnum >= MinYB) 
+        );
+      });
 
-function displayResults(filteredData) {
-  const tbody = document.querySelector('#resultsTable tbody');
-  tbody.innerHTML = '';
+      displayResults(filteredData);
+    }
 
-  filteredData.forEach(item => {
-    const row = document.createElement('tr');
-    row.innerHTML = `
-      <td>${item.name}</td>
-      <td>${item.type}</td>
-      <td>${item.distance}</td>
-    `;
-    tbody.appendChild(row);
-  });
-}
+    function displayResults(filteredData) {
+      const tbody = document.querySelector('#resultsTable tbody');
+      tbody.innerHTML = '';
+
+      filteredData.forEach(item => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${item['YB']}</td>
+          <td>${item['l']}</td>
+          <td>${item['b']}</td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
