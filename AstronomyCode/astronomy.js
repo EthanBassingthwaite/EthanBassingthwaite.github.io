@@ -10,6 +10,8 @@ const csvFiles = {
     // Add more mappings as needed
 };
 
+let currentFilteredData = [];
+
 document.addEventListener('DOMContentLoaded', function () {
     // Load data for each table
     let loadPromises = Object.keys(csvFiles).map(tableId => {
@@ -107,6 +109,33 @@ function showTable(tableId) {
 
 function applySearchFilter() {
     searchData();
+}
+
+function downloadCSV(data) {
+    if (data.length === 0) {
+        alert('No data available for download.');
+        return;
+    }
+
+    const headers = Object.keys(data[0]);
+    const csvRows = [];
+
+    // Add headers
+    csvRows.push(headers.join(','));
+
+    // Add data rows
+    data.forEach(row => {
+        csvRows.push(headers.map(header => row[header] || '').join(','));
+    });
+
+    // Create CSV file and trigger download
+    const csvContent = csvRows.join('\n');
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.setAttribute('href', url);
+    link.setAttribute('download', 'data.csv');
+    link.click();
 }
 
 // Initialize by showing the first table
