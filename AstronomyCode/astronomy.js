@@ -4,7 +4,6 @@ let tableData = {
     // Add more tables as needed
 };
 
-// Map table IDs to their respective CSV file paths
 const csvFiles = {
     table1: './AstronomyCode/Table1Data.csv',
     table2: './AstronomyCode/Table2Data.csv'
@@ -18,9 +17,10 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(response => response.text())
             .then(contents => {
                 tableData[tableId] = Papa.parse(contents, { header: true }).data;
-                // Initialize search when all data is loaded
+                // Initialize table display when all data is loaded
                 if (Object.keys(tableData).every(id => tableData[id].length > 0)) {
-                    displayResults('table1', tableData.table1); // Display initial table
+                    // Initialize the first table
+                    displayResults('table1', tableData.table1);
                 }
             });
     });
@@ -37,10 +37,8 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function searchData() {
-    // Get current active table
     const activeTableId = document.querySelector('.tab-content:not([style*="display: none"])').id;
 
-    // Get search parameters
     const MaxYB = parseFloat(document.getElementById('YBmax').value);
     const MinYB = parseFloat(document.getElementById('YBmin').value);
     const MaxL = parseFloat(document.getElementById('lmax').value);
@@ -48,7 +46,6 @@ function searchData() {
     const MaxB = parseFloat(document.getElementById('bmax').value);
     const MinB = parseFloat(document.getElementById('bmin').value);
 
-    // Filter data for the active table
     const filteredData = tableData[activeTableId].filter(item => {
         const YBnum = parseInt(item['YB']);
         const l = parseFloat(item['l']);
@@ -67,34 +64,48 @@ function searchData() {
     displayResults(activeTableId, filteredData);
 }
 
-function displayResults(tableId, filteredData) {
-    const tbody = document.querySelector(`#${tableId} tbody`);
+function displayResults(tableId, data) {
+    const table = document.querySelector(`#${tableId} table`);
+    const thead = table.querySelector('thead');
+    const tbody = table.querySelector('tbody');
+
+    // Clear previous content
+    thead.innerHTML = '';
     tbody.innerHTML = '';
 
-    filteredData.forEach(item => {
+    if (data.length === 0) return;
+
+    // Generate table headers dynamically
+    const headers = Object.keys(data[0]);
+    const headerRow = document.createElement('tr');
+    headers.forEach(header => {
+        const th = document.createElement('th');
+        th.textContent = header;
+        headerRow.appendChild(th);
+    });
+    thead.appendChild(headerRow);
+
+    // Generate table rows dynamically
+    data.forEach(item => {
         const row = document.createElement('tr');
-        row.innerHTML = `
-          <td>${item['YB']}</td>
-          <td>${item['l']}</td>
-          <td>${item['b']}</td>
-        `;
+        headers.forEach(header => {
+            const td = document.createElement('td');
+            td.textContent = item[header] || ''; // Handle missing data gracefully
+            row.appendChild(td);
+        });
         tbody.appendChild(row);
     });
 }
 
-// Function to show the selected table and hide others
 function showTable(tableId) {
     const contents = document.querySelectorAll('.tab-content');
     contents.forEach(content => content.style.display = 'none');
     document.getElementById(tableId).style.display = 'block';
 
-    // Reapply the search filter when switching tabs
     applySearchFilter();
 }
 
-// Function to apply search filter to the visible table
 function applySearchFilter() {
-    // Trigger searchData to filter the currently visible table
     searchData();
 }
 
