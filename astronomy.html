@@ -23,28 +23,28 @@
   </div>
   
   <main>
-  <div style="height: 200px; display: inline; width: 30%;"> 
+  <div style="display: inline; width: 100%;"> 
       <label for="YBmax" style="width: 20%;"> Name: </label>
       <input type="text" id="YBmax" placeholder="Enter max YB number" oninput="searchData()" />
-    
-      <label for="YBmin" style="width: 20%;">Name:</label>
-      <input type="text" id="YBmin" placeholder="Enter min YB number" oninput="searchData()" />
-  </div>
-  <div style="height: 200px; display: inline; width: 30%;">
-
+      
       <label for="lmax" style="width: 20%;">Type:</label>
       <input type="text" id="lmax" placeholder="Enter max longitude" oninput="searchData()" />
+
+      <label for="bmax">Type:</label>
+      <input type="text" id="bmax" placeholder="Enter max latitude" oninput="searchData()" />
+  </div>
+    
+  <div style="height: 200px; display: inline; width: 30%;">
+      <label for="YBmin" style="width: 20%;">Name:</label>
+      <input type="text" id="YBmin" placeholder="Enter min YB number" oninput="searchData()" />
     
       <label for="lmin" style="width: 20%;">Type:</label>
       <input type="text" id="lmin" placeholder="Enter min longitude" oninput="searchData()" />
-  </div>
-  <div style="height: 200px; display: inline; width: 30%;">
-      <label for="bmax">Type:</label>
-      <input type="text" id="bmax" placeholder="Enter max latitude" oninput="searchData()" />
-    
+
       <label for="bmin">Type:</label>
       <input type="text" id="bmin" placeholder="Enter min latitude" oninput="searchData()" />
   </div>
+
   <div class="tabs">
       <button class="tab-button" onclick="showTable('table1')">Table 1</button>
       <button class="tab-button" onclick="showTable('table2')">Table 2</button>
