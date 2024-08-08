@@ -48,3 +48,24 @@ header {
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
+/* Table styling, used for astronomy page */
+.resultsTable {
+    height: 400px; /* Set the height you need */
+    overflow-y: auto; /* Enable vertical scrolling */
+    border: 1px solid #ddd; /* Optional: Add border for visual separation */
+}
+
+table {
+    width: 100%; /* Ensure table uses full width of container */
+    border-collapse: collapse; /* Optional: Collapse borders for cleaner look */
+}
+
+th, td {
+    border: 1px solid #ddd; /* Add borders to table cells */
+    padding: 8px; /* Add padding for readability */
+    text-align: left; /* Align text to the left */
+}
+
+
+
