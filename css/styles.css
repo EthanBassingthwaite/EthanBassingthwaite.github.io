@@ -67,5 +67,27 @@ th, td {
     text-align: left; /* Align text to the left */
 }
 
+.tabs {
+    margin-bottom: 20px;
+}
+
+.tab-button {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tab-content th, .tab-content td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
 
 
