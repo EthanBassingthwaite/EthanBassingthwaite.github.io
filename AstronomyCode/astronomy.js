@@ -111,20 +111,20 @@ function applySearchFilter() {
     searchData();
 }
 
-function downloadCSV(data) {
-    if (data.length === 0) {
+function downloadCSV() {
+    if (currentFilteredData.length === 0) {
         alert('No data available for download.');
         return;
     }
 
-    const headers = Object.keys(data[0]);
+    const headers = Object.keys(currentFilteredData[0]);
     const csvRows = [];
 
     // Add headers
     csvRows.push(headers.join(','));
 
     // Add data rows
-    data.forEach(row => {
+    currentFilteredData.forEach(row => {
         csvRows.push(headers.map(header => row[header] || '').join(','));
     });
 
@@ -134,8 +134,11 @@ function downloadCSV(data) {
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.setAttribute('href', url);
-    link.setAttribute('download', 'data.csv');
+    link.setAttribute('download', 'filtered-data.csv');
     link.click();
+
+    // Cleanup
+    URL.revokeObjectURL(url);
 }
 
 // Initialize by showing the first table
