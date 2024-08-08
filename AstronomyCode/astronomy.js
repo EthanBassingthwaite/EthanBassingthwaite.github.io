@@ -141,5 +141,35 @@ function downloadCSV() {
     URL.revokeObjectURL(url);
 }
 
+function downloadCSVall() {
+    const activeTableId = document.querySelector('.tab-content:not([style*="display: none"])').id;
+    const fileUrl = csvFiles[activeTableId];
+
+    if (!fileUrl) {
+        alert('No file URL available for the active table.');
+        return;
+    }
+
+    // Fetch the CSV file from the URL
+    fetch(fileUrl)
+        .then(response => response.text())
+        .then(csvContent => {
+            // Create a Blob from the CSV content
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.setAttribute('href', url);
+            link.setAttribute('download', 'full-data.csv');
+            link.click();
+
+            // Cleanup
+            URL.revokeObjectURL(url);
+        })
+        .catch(error => {
+            console.error('Error fetching the CSV file:', error);
+            alert('Failed to download the CSV file.');
+        });
+}
+
 // Initialize by showing the first table
 showTable('table1');
