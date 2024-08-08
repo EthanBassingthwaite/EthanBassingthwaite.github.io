@@ -62,7 +62,7 @@ function searchData() {
             (isNaN(MinYB) || YBnum >= MinYB)
         );
     });
-
+    currentFilteredData = filteredData;
     displayResults(activeTableId, filteredData);
 }
 
