@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 // Initialize table display when all data is loaded
                 if (Object.keys(tableData).every(id => tableData[id].length > 0)) {
                     // Initialize the first table
-                    displayResults('table1', tableData.table2);
+                    displayResults('table2', tableData.table2);
                 }
             });
     });
