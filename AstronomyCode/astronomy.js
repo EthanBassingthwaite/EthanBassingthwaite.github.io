@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 // Initialize table display when all data is loaded
                 if (Object.keys(tableData).every(id => tableData[id].length > 0)) {
                     // Initialize the first table
-                    displayResults('table1', tableData.table1);
+                    displayResults('table1', tableData.table2);
                 }
             });
     });
@@ -176,4 +176,4 @@ function downloadCSVall() {
 }
 
 // Initialize by showing the first table
-showTable('table1');
+showTable('table2');
