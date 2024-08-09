@@ -1,12 +1,16 @@
 let tableData = {
-    table1: [],
-    table2: []
+    table2: [],
+    table3: [],
+    table4: [],
+    table6: []
     // Add more tables as needed
 };
 
 const csvFiles = {
-    table1: './AstronomyCode/Table1Data.csv',
-    table2: './AstronomyCode/Table2Data.csv'
+    table2: './AstronomyCode/Table2Data.csv',
+    table3: './AstronomyCode/Table3Data.csv',
+    table4: './AstronomyCode/Table4Data.csv',
+    table6: './AstronomyCode/Table6Data.csv'
     // Add more mappings as needed
 };
 
