@@ -5,6 +5,48 @@ header {
   text-align: left;
 }
 
+body {
+  font-family: Arial, sans-serif; /* Clean and modern font */
+  line-height: 1.6; /* Improved readability */
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9; /* Light gray background for the whole page */
+}
+
+p {
+  color: #222; /* Black text color for paragraphs */
+  margin: 0 0 15px 0; /* Margin to add space below each paragraph */
+  padding: 0;
+}
+
+/* Spacing for other elements */
+h1, h2, h3, h4, h5, h6 {
+  color: #333; /* Consistent text color for headings */
+  margin: 20px 0; /* Margin above and below headings */
+}
+
+ul, ol {
+  margin: 0 0 15px 20px; /* Spacing for lists with indentation */
+  padding: 0;
+}
+
+a {
+  color: #0066cc; /* Stylish blue for links */
+  text-decoration: none; /* Remove underline from links */
+}
+
+a:hover {
+  text-decoration: underline; /* Underline on hover for better UX */
+}
+
+/* Adding some general container styles */
+.container {
+  max-width: 1200px; /* Maximum width for content containers */
+  margin: 0 auto; /* Center align containers */
+  padding: 20px; /* Padding inside containers */
+}
+
+
 .menu-button {
   background-color: #444;
   border: none;
