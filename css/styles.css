@@ -6,33 +6,37 @@ header {
 }
 
 body {
-  font-family: Arial, sans-serif; /* Clean and modern font */
-  line-height: 1.6; /* Improved readability */
+  font-family: Arial, sans-serif; 
+  line-height: 1.6; 
   margin: 0;
   padding: 0;
-  background-color: #f9f9f9; /* Light gray background for the whole page */
+  background-color: #f9f9f9; 
 }
 
 p {
-  color: #222; /* Black text color for paragraphs */
-  margin: 0 0 15px 0; /* Margin to add space below each paragraph */
-  padding: 0;
+  color: #222;
+  margin: 10px 20px 0px 20px; 
+  padding: 10px;
 }
 
-/* Spacing for other elements */
+li {
+  color: #222;
+  margin: 0px 20px;
+}
+
 h1, h2, h3, h4, h5, h6 {
-  color: #333; /* Consistent text color for headings */
-  margin: 20px 0; /* Margin above and below headings */
+  color: #333;
+  margin: 5px 10px 5px 10px; 
 }
 
 ul, ol {
-  margin: 0 0 15px 20px; /* Spacing for lists with indentation */
+  margin: 0 0 15px 20px; 
   padding: 0;
 }
 
 a {
-  color: #0066cc; /* Stylish blue for links */
-  text-decoration: none; /* Remove underline from links */
+  color: #0066cc; 
+  text-decoration: none; 
 }
 
 a:hover {
@@ -91,16 +95,17 @@ a:hover {
   display: block;
 }
 
-/* Table styling, used for astronomy page */
+
 .resultsTable {
-    height: 400px; /* Set the height you need */
-    overflow-y: auto; /* Enable vertical scrolling */
-    border: 1px solid #ddd; /* Optional: Add border for visual separation */
+
+    height: 400px; 
+    overflow-y: auto; 
+    border: 1px solid #ddd;
 }
 
 table {
-    width: 100%; /* Ensure table uses full width of container */
-    border-collapse: collapse; /* Optional: Collapse borders for cleaner look */
+    width: 100%; 
+    border-collapse: collapse; 
 }
 
 th, td {
@@ -110,15 +115,21 @@ th, td {
 }
 
 .tabs {
-    margin-bottom: 20px;
+    margin: 20px 30px;
+    display: flex; 
+    justify-content: space-between;
 }
 
 .tab-button {
     padding: 10px;
     cursor: pointer;
+    flex: 1; 
+    margin: 0 4px; 
+
 }
 
 .tab-content {
+    margin: 5px 20px;
     display: none;
 }
 

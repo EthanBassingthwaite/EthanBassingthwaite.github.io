@@ -29,8 +29,10 @@
     <div id="header"></div>
         <!-- Header - set the background image for the header in the line below-->
         
-        <div class="py-4 bg-image-full" style="background-image: url('images/CemBackground.JPG')">
-            <div style="height: 300px;"></div>
+        <div style="background-image: url('images/CemBackground.JPG');
+                    background-size: cover; background-position: center;  background-repeat: no-repeat; 
+                    width: 100%; height: 80vh; overflow: hidden;">
+
         </div>
         
             <div class="container my-4">
@@ -46,7 +48,6 @@
                 <div class="row justify-content-center">
                     
                     <div class="col-lg-6">
-                        <h2>Overview of Project </h2>
                         <p class="mb-0">This work was done in collaboration with the Basque Museum & Cultural Center in Boise, Idaho. This project seeks to offer a visual and interactive representation of the cemetery in Jordan Valley, Oregon.  
                             <br>Researchers, such as Dr. Bonmatí (CofI), Patty Miller and Megan Overgaard, collected data from the cemetery that made this project possible. Thanks to their diligence, we knew the names, dates, and geolocation of each grave, which was used to create a map of the cemetery, seen below.  
                         </p>
@@ -72,13 +73,15 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-6">
                         <h2>Future Applications </h2>
-                        <p class="mb-0">
+                        <p>
                             This map was designed to be flexible. One can easily insert it into practically any website with ease akin to a simple image. In addition, it draws all its data from a csv file, which means one can make minor modifications, swap out the data, and have a map for another cemetery. The Basque Museum and Cultural Center hopes to use and expand this code to map out other cemeteries. For instance, it would take only the following steps: 
-                                <ol>
-                                    <li>Upload a new CSV file following the same naming conventions </li>
-                                    <li>Insert the div element “MapContainer” and its contents where you want the map to go (along with copying over the relevant files and dependencies) </li>
-                                    <li>Modify a few aspects of the code, such as starting position of the map or size of the MapContainer </li>
-                                </ol>
+                        </p>
+                            <ol style="margin: 5px 0px 0px 45px;">
+                                <li>Upload a new CSV file following the same naming conventions </li>
+                                <li>Insert the div element “MapContainer” and its contents where you want the map to go (along with copying over the relevant files and dependencies) </li>
+                                <li>Modify a few aspects of the code, such as starting position of the map or size of the MapContainer </li>
+                            </ol>
+                        <p style="color: #222; margin:0px 20px;">
                             The code can be accessed <a href="https://github.com/EthanBassingthwaite/EthanBassingthwaite.github.io">here</a>
                         </p>
                     </div>
