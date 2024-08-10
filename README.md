@@ -4,6 +4,7 @@ To begin, download everything from the MapCode file, and upload it to wherever y
 
 You will then want to place this section of code wherever you want the map to appear in your code:
 
+```html
 <div class="MapContainer" style="margin-left:10%; width: 80%;">
     <div class="movablebox" id="map">
         <div class="leaflet-control coordinate"></div>
@@ -15,6 +16,7 @@ You will then want to place this section of code wherever you want the map to ap
         <img src="MapCode/CoILogo.png" class="CoIlogo">
     </div>
 </div>
+```
 
 If you want the map to take up different locations/different widths, modify the 
 "margin-left:10% and width:80%" section, as currently it is in the center of whatever element you place it in with a 10% margin on either side
