@@ -51,6 +51,7 @@
         
             //The place where I construct and add the map and list markers/list elements
             function addMarkers(data) {
+
                 var myIcon = L.icon({
                     iconUrl: './MapCode/icon.png',
                     iconSize: [10, 10],
@@ -83,7 +84,7 @@
                 }
                 
                 //assigning the values to the markers
-                for (let i = 0; i < coorlist.length-1; i++) {
+                for (let i = 0; i < coorlist.length; i++) {
                     markerlist.push(L.marker(coorlist[i], {icon: myIcon, draggable: false}));
                     markerlist[i].bindPopup(textlist[i], {maxWidth : 600}).openPopup().addTo(markersLayer);
                 }
@@ -96,12 +97,14 @@
                 });*/
         
                 //Making the list
-                for (let i = 0; i < searchlist.length-1; i++) {
+                for (let i = 0; i < searchlist.length; i++) {
                     const li = document.createElement('li');
                     li.innerHTML = searchlist[i];
                     li.classList.add("listclassformat");
                     li.style.backgroundImage =  'url("./lowqualityimages/' + data[i]['Marker Photo'].slice(0, -3) + 'jpg")'; 
                     li.style.backgroundSize = "120px";
+                    li.style.color = "#222";
+                    li.style.margin = "0px 0px";
                     li.addEventListener('click', function() {
                         map.setView(coorlist[i], 20);
                         markerlist[i].openPopup();
@@ -118,22 +121,30 @@
                     .then(contents => {
                         //Parse it into an array
                         csvLines = Papa.parse(contents, {
-                                header: true
+                                header: true,
+                                skipEmptyLines: true
                         }).data;
                         markersLayer = new L.LayerGroup().addTo(map);
                         addMarkers(csvLines);
                         document.getElementById('searchInput').addEventListener('input', function () {
                             var searchTerm = this.value.toLowerCase();
-                            markersLayer.clearLayers(); // Clear existing markers
-                            listItems.innerHTML = ''; //Clear out the search bar
+                            markersLayer.clearLayers(); 
+                            listItems.innerHTML = ''; 
                             data = csvLines;
+                            const columnIndices = [0, 1, 2]; // Example: search in columns 1, 2, and 4
+
+                            
+                            //var filteredMarkers = data.filter(row => row.some(element => element.includes(searchTerm)));
                             var filteredMarkers = csvLines.filter(function (data) {
-                                var firstName = (data['First Name'] || '').toLowerCase();
-                                var lastName = (data['Last Name'] || '').toLowerCase();
-                        
-                                return firstName.includes(searchTerm) || lastName.includes(searchTerm);
+                                var firstName = (data['First Name'] || '').toLowerCase().trim();
+                                var lastName = (data['Last Name'] || '').toLowerCase().trim();
+                                var fullName = (firstName + ' ' + lastName);
+                                var altname = (lastName + ', ' + firstName);
+                            
+                                return firstName.includes(searchTerm) || lastName.includes(searchTerm) || fullName.includes(searchTerm) || altname.includes(searchTerm);
+                            
                             });
-                
+                            
                             addMarkers(filteredMarkers);
                         });
 
