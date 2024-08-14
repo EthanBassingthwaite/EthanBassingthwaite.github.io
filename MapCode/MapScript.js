@@ -65,7 +65,7 @@
                 //Creating the strings for the markers and lists
                 for (let i = 0; i < data.length; i++) {
                     filepath = `./images/${data[i]['Marker Photo']}`;
-                    popuptext = `<img src="${filepath}" alt="Image" class="popup_image">`;
+                    popuptext = `<img src="${filepath}" alt="Image" class="popup_image" >`;
                     if (data[i]['Marker Photo_Military'] !== '') {
                         militaryFilepath = `./images/${data[i]['Marker Photo_Military']}`;
                         popuptext += `<img src="${militaryFilepath}" alt="Image" class="popup_image">`;
