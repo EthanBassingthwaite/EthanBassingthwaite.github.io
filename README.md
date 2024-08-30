@@ -1,0 +1,87 @@
+Welcome to using my code.
+
+To begin, download everything from the MapCode file, and upload it to wherever you are keeping the code for your website 
+
+You will then want to place this section of code wherever you want the map to appear in your code:
+
+```html
+<div class="MapContainer" style="margin-left:10%; width: 80%;">
+    <div class="movablebox" id="map">
+        <div class="leaflet-control coordinate"></div>
+    </div>
+    <div class="dividingElement"></div>
+    <div class="movablebox">
+        <input type="text" id="searchInput" placeholder="Search by First or Last name...">
+        <div id ="maplist"></div>
+        <img src="MapCode/CoILogo.png" class="CoIlogo">
+    </div>
+</div>
+```
+
+If you want the map to take up different locations/different widths, modify the 
+"margin-left:10% and width:80%" section, as currently it is in the center of whatever element you place it in with a 10% margin on either side
+
+Then you have to include the following code for style aspects in your html file
+These will control how the map looks
+
+<!-- leaflet css  -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+<!-- Styles for the map section-->
+<link href="MapCode/Map.css" rel="stylesheet"/>
+
+Then finally, include the following scripts in your html file
+
+<!-- leaflet js  and papa parse-->
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<script src="MapCode/PapaParse.js"></script>
+<!-- Map control script by Ethan-->
+<script src="MapCode/MapScript.js"></script>
+
+These will load leaflet (for the map), PapaParse(to parse the csv file) and then MapScript for the logic behind the map
+
+Then you will want to replace CemeteryList.csv with a csv file of whatever cemetery you want to look at.
+
+Then outside of the MapCode folder (or inside if you change a small bit of code) you want to upload a folder 'images' with all of your images for the map
+I strongly recommend also using a folder 'lowqualityimages' to store lower quality images in order to greatly increase the user experience.
+
+Congrats, the map should be working now.
+Possible areas that you might want to change:
+If you want to change style elements or positions of various objects, look in the Map.css file
+    For instance, you can change how to popups look by modifying this code:
+    
+    .leaflet-popup-content-wrapper {
+        background-color: #f6fad1;
+        color: #000000; //text color
+        border: 1px solid rgb(252, 255, 74);//1px means border size on 1pixel
+        border-radius: 5px; // rounds corners
+        font-family: 'Georgia', 'Times New Roman', serif;
+    }
+
+Similarly, modify the .MapContainer in order to change the size and area of the map
+
+Another thing that might be of note is that file path are case sensitive.
+That is, .JPG and .jpg, although being the same file type, are treated differently.
+In the current code, the images are of the form .JPG and the lowqualityimages are of .jpg
+Hence the two areas of the code below can be modified to fix this issue:
+
+filepath = `../images/${data[i]['Marker Photo']}`;
+    popuptext = `<img src="${filepath}" alt="Image" class="popup_image">`;
+    if (data[i]['Marker Photo_Military'] !== '') {
+        militaryFilepath = `../images/${data[i]['Marker Photo_Military']}`;
+        popuptext += `<img src="${militaryFilepath}" alt="Image" class="popup_image">`;
+    }
+
+This code just draws exactly what is included in the csv file
+Meanwhile this code replaces the last 3 letters with jpg
+
+li.style.backgroundImage =  'url("../lowqualityimages/' + data[i]['Marker Photo'].slice(0, -3) + 'jpg")'; 
+
+Modify these sections of the code if you are encountering this mismatch, or modify the latter example to:
+
+li.style.backgroundImage =  'url("../lowqualityimages/' + data[i]['Marker Photo'])';
+
+If your csv file urls match everything for the low quality images
+
+I believe that should be mostly everything. 
+Finally, if you have any questions, feel free to message me at ethan.bassingthwaite@yotes.collegeofidaho.edu
+I will respond as soon as I can

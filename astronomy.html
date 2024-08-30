@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yellow Ball Data Lookup</title>
+  <link rel="stylesheet" href="css/styles.css"> 
+  <script defer>
+    function includeHeader() {
+      fetch('header.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('header').innerHTML = data;
+        });
+    }
+  </script>
+</head>
+<body onload="includeHeader()">
+<div id="header"></div>
+<main>
+    <h2>
+        Yellowball Research
+    </h2>
+    <div style="display: flex; margin-right: 30px;">
+        <div style="width: 65%;">
+            <p>
+            Volunteer scientists first identified Yellowballs in the Milky Way Project in 2011-2012, which used false coloring to represent the infrared light images (24µm as red and 8µm as green) which made some objects that were bright in both wavelengths appear as small, yellow balls.
+            Our data contains two additional wavelengths, 70µm and 12µm.
+            Yellowballs were determined to be clumps of gas that will go on to form clusters containing intermediate to massive stars. 
+            <br>
+            From our perspective the galaxy is static, frozen. We will never see the entire development of a star. 
+            Comparatively, it is similar to a biologist in stopped time discovery a host of tadpoles mid-transition into frogs. Conceptually, we know that nebulas transform into stars, just like tadpoles metamorphose frogs.
+            But having actual specimens to study provides a host of new information to expand our understanding. 
+            </p>
+        </div>
+        <div>
+            <figure>
+                <img src="images/ds93cropped.png" alt="Yellowballs" style="width: 100%;" class="standard-image">
+                <figcaption>Image obtain by Michael Coleman</figcaption>
+            </figure>
+        </div>
+    </div>
+    <div>
+        <p>
+        The research that I had the pleasure of being part of expanded the previous catalogue of Yellowballs from a pilot study of 500 to over 6000. 
+        My personal contributions varied from quality of life improvements to developing ways to improve our analysis.
+        I improved photometry, the act of isolating the light from the Yellowball from the background, reducing the time needed per Yellowball by half or more. 
+        I utilized Google Drive to let the users of various programs load the data rather than download the more than 100GB of data that was previously required. 
+        I designed an 'Average Mask' to make a single mask that represents the user selections made for photometry along with metrics to measure user disagrement.
+        Finally, I made a framework to make our data more publically accessable, as featured below. 
+        Currently it contains the data from the preliminary study, to be updated as the expanded data is compiled. 
+        </p>
+    </div>
+    <br>
+  
+    <div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+
+        <div style="display: inline-block; ">
+            <div style="display: flex;">
+                <div style="margin-right: 5px;">
+                    <label for="YBmax"> Yellowball Number: </label>
+                </div>
+                <div style="display: flex; gap: 3px; flex-direction: column;">
+                    <input type="text" id="YBmax" placeholder="Enter max YB number" oninput="searchData()" />
+                    <input type="text" id="YBmin" placeholder="Enter min  YB number" oninput="searchData()" />
+                </div>
+            </div>
+        </div>
+
+        <div style="display: inline-block; ">
+            <div style="display: flex;">
+                <div style="margin-right: 5px;">
+                    <label for="YBmax"> Longitude: </label>
+                </div>
+                <div style="display: flex; gap: 3px; flex-direction: column;">
+                    <input type="text" id="lmax" placeholder="Enter max longitude" oninput="searchData()" />
+                    <input type="text" id="lmin" placeholder="Enter min  longitude" oninput="searchData()" />
+                </div>
+            </div>
+        </div>
+
+        <div style="display: inline-block; ">
+            <div style="display: flex;">
+                <div style="margin-right: 5px;">
+                    <label for="YBmax"> Latitude: </label>
+                </div>
+                <div style="display: flex; gap: 3px; flex-direction: column;">
+                    <input type="text" id="bmax" placeholder="Enter max latitude" oninput="searchData()" />
+                    <input type="text" id="bmin" placeholder="Enter min  latitude" oninput="searchData()" />
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+    
+    <div class="tabs">
+        <button class="tab-button" onclick="showTable('table2')" style="width: 24%;">Table 2</button>
+        <button class="tab-button" onclick="showTable('table3')" style="width: 24%;">Table 3</button>
+        <button class="tab-button" onclick="showTable('table4')" style="width: 24%;">Table 4</button>
+        <button class="tab-button" onclick="showTable('table6')" style="width: 24%;">Table 6</button>
+        <!-- Add more buttons as needed -->
+    </div>
+    
+    <div id="table2" class="tab-content resultsTable">
+        <table class="resultsTable">
+            <thead>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+  
+    <div id="table3" class="tab-content resultsTable">
+        <table>
+            <thead>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <div id="table4" class="tab-content resultsTable">
+        <table class="resultsTable">
+            <thead>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    
+    <div id="table6" class="tab-content resultsTable">
+        <table>
+            <thead>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <div style="margin: 5px 5px;">
+        <button id="downloadFilteredData" onclick="downloadCSV()">Download Filtered Data</button>
+        <button id="downloadCompleteData" onclick="downloadCSVall()">Download Complete Data</button>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.1.2/papaparse.min.js"></script>
+    <script src="AstronomyCode/astronomy.js"></script>
+</main>
